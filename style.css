@@ -657,7 +657,6 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   text-transform: capitalize;
   margin: 0;
   padding: 20px 0;
-  background-image: url("img/section-title-bg.png");
   background-repeat: no-repeat;
   background-position: center center; }
   @media only screen and (max-width: 767px) {
