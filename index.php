@@ -58,7 +58,7 @@ include('session.php');
 
                                 <!-- Header Logo -->
                                 <div class="header-logo col-md-4 col-12">
-                                    <a href="index.html" class="logo"><img src="img/logo-jj.png" alt="logo" style="width: 113px; height: 132px;"></a>
+                                    <a href="index.php" class="logo"><img src="img/logo-jj.png" alt="logo" style="width: 113px; height: 132px;"></a>
                                 </div>
 
                                 <!-- Account Menu -->
@@ -131,13 +131,13 @@ include('session.php');
 
                         <!-- Header Bottom Logo -->
                         <div class="header-bottom-logo">
-                            <a href="index.html" class="logo"><img src="img/logo-jj.png" alt="logo"></a>
+                            <a href="index.php" class="logo"><img src="img/logo-jj.png" alt="logo"></a>
                         </div>
 
                         <!-- Main Menu -->
                         <nav id="main-menu" class="main-menu">
                             <ul>
-                                <li class="active"><a href="index.html">home</a></li>
+                                <li class="active"><a href="index.php">home</a></li>
                                 <li><a href="#">Our Brands</a>
                                     <ul class="sub-menu">
                                         <li><a href="#">Prohall (coming soon)</a></li>
