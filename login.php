@@ -1,11 +1,88 @@
+<?php
+include('session.php');
+include('dbconnection.php'); // including database connection
+$error=''; // Variable To Store Error Message
+if (isset($_POST['login'])) {
+    // Define and sanitize input
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
+
+    // Prepare SQL statement to avoid SQL injection
+    $stmt = $conn->prepare("SELECT * FROM users WHERE Email = ? AND Password = ?");
+    $stmt->bind_param("ss", $email, $password);
+    $stmt->execute();
+
+    // Get result and check number of rows
+    $result = $stmt->get_result();
+    $rows = $result->num_rows;
+    $user = $result->fetch_assoc();
+
+    if ($rows == 1) {
+        session_start();
+
+        // If already logged in with same email
+        if (!empty($_SESSION['login_user']) && $_SESSION['login_user'] == $email) {
+            $error = "<div id='login-error' class='alert alert-info' role='alert'>You are already logged on!</div>";
+        } else {
+            // Store login info in session
+            $_SESSION['login_user'] = $email;
+
+            header("Location: index.php");
+            exit();
+        }
+    } else {
+        $error = "<div id='login-error' class='alert alert-danger' role='alert'>Wrong Email or Password</div>";
+    }
+
+    $stmt->close();
+    $conn->close();
+}
+
+if (isset($_POST['register'])) {
+
+    // Get and sanitize inputs
+    $firstname = trim($_POST['firstname']);
+    $lastname = trim($_POST['lastname']);
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
+    $confirmpassword = trim($_POST['confirmpassword']);
+
+    // Check if user already exists
+    $stmt = $conn->prepare("SELECT * FROM users WHERE FirstName = ? AND LastName = ? AND Email = ?");
+    $stmt->bind_param("sss", $firstname, $lastname, $email);
+    $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows > 0) {
+        echo "<script>alert('User already exists');</script>";
+    } else {
+        if ($password !== $confirmpassword) {
+            $error = "<div id='login-error' class='alert alert-danger' role='alert'>Password doesn't match!</div>";
+        } else {
+            $insert = $conn->prepare("INSERT INTO users (FirstName, LastName, Email, Password) VALUES (?, ?, ?, ?)");
+            $insert->bind_param("ssss", $firstname, $lastname, $email, $password);
+
+            if ($insert->execute()) {
+                header("Location: login.php");
+                exit();
+            } else {
+                $error = "<div id='login-error' class='alert alert-danger' role='alert'>Error Registering. Please Try Again!</div>";
+            }
+
+            $insert->close();
+        }
+    }
+
+    $stmt->close();
+    $conn->close();
+}
+?>
 <!doctype html>
 <html class="no-js" lang="en">
-
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>JJHEALTHCARE - Contact</title>
+    <title>JJHEALTHCARE - Login</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -63,7 +140,14 @@
                                 <!-- Account Menu -->
                                 <div class="account-menu col-md-4 col-12">
                                     <ul>
-                                        <li><a href="#">My Account</a></li>
+                                    <?php
+                                        if(!empty($login_session)){
+                                            echo "<li><a href='myaccount.php'>My Account</a></li>";
+                                        }
+                                        else{
+                                           echo "<li><a href='login.php'>Login</a></li>"; 
+                                        }
+                                    ?>
                                         <li><a href="#" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span class="num">2</span></a>
                                             
                                             <!-- Mini Cart -->
@@ -138,7 +222,7 @@
                                 </li>
                                 <li><a href="about.html">About</a></li>
                                 <!-- <li><a href="blog.html">Blogs</a></li> -->
-                                <li class="active"><a href="contact.html">contact</a></li>
+                                <li><a href="contact.html">contact</a></li>
                             </ul>
                         </nav>
 
@@ -177,68 +261,73 @@
                 
                 <!-- Page Title Start -->
                 <div class="page-title text-center col">
-                    <h1>contact us</h1>
+                    <h1>Login / Register</h1>
                 </div><!-- Page Title End -->
                 
             </div>
         </div>
     </div><!-- Page Banner Section End-->
-    
-       
-    <!-- Contact Section Start-->
-    <div class="contact-section section bg-white pt-120">
+
+
+        <!-- Checkout Section Start-->
+        <div class="cart-section section pt-120 pb-90">
         <div class="container">
-            <div class="row">
-                
-                <div class="col-xl-10 col-12 ml-auto mr-auto">
-                    
-                    <div class="contact-wrapper">
-                        <div class="row">
+            <div style="display: flex; justify-content:center;">
+               
+                <div class="col-lg-6 col-12 mb-30">
+                   
+                    <!-- Checkout Accordion Start -->
+                    <div id="checkout-accordion" class="panel-group">
+                       
+                        <!-- Checkout Method -->
+                        <div class="panel single-accordion">
+                            
+                            <div id="checkout-method" class="collapse show">
+                                <div class="checkout-method accordion-body fix">
 
-                            <div class="contact-info col-lg-5 col-12">
-                                <h4 class="title">Contact Info</h4>
-                                <p>We’d love to hear from you! For any inquiries about Amaeyya or Prohall products,
-
-                                    feel free to reach out to us through our website.
+                                
+                                    <?php
+                                        echo $error; 
+                                     ?>
+                                   
+                                    <ul class="checkout-method-list">
+                                        <li class="active" data-form="checkout-login-form">Login</li>
+                                        <li data-form="checkout-register-form">Register</li>
+                                    </ul>
                                     
-                                    Whether you have questions, need product recommendations, or are ready to place an order, our team is here to help.
+                                    <form action="#" class="checkout-login-form" method="post">
+                                        <div class="row">
+                                            <div class="input-box col-12 mb-20"><input type="email" id="email" name="email" value="" placeholder="Email Address" required></div>
+                                            <div class="input-box col-12 mb-20"><input type="password" id="password" name="password" value="" placeholder="Password" required></div>
+                                            <a class="input-box col-12 mb-20" href="forgotpassword.php">Forgot Password ?</a>
+                                            <div class="input-box col-12 mb-20"><input type="submit" value="Login" name="login"></div>
+                                        </div>
+                                    </form>
                                     
-                                    Connect with us today—we’re just a click away!</p>
-                                <ul>
-                                    <li><span>Address:</span>J & J Healthcare Ltd, Phoenix</li>
-                                    <li><span>Email:</span>info@jjhealthcareltd.com</li>
-                                    <li><span>Phone:</span>+ 230 5 943 4000</li>
-                                </ul>
-                                <div class="contact-social">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                    <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                                    <form action="#" class="checkout-register-form" method="post">
+                                        <div class="row">
+                                            <div class="input-box col-12 mb-20"><input type="text" id="firstname" name="firstname" value="" placeholder="First Name"></div>
+                                            <div class="input-box col-12 mb-20"><input type="text" id="lastname" name="lastname" value="" placeholder="Last Name"></div>
+                                            <div class="input-box col-12 mb-20"><input type="email" id="email" name="email" value="" placeholder="Email Address"></div>
+                                            <div class="input-box col-12 mb-20"><input type="password" id="password" name="password" value="" placeholder="Password"></div>
+                                            <div class="input-box col-12 mb-20"><input type="password" id="confirmpassword" name="confirmpassword" value="" placeholder="Confirm Password"></div>
+                                            <div class="input-box col-12 mb-20"><input type="submit" value="Register" name="register"></div>
+                                        </div>
+                                    </form>
+                                    
                                 </div>
                             </div>
-                            <div class="contact-form col-lg-7 col-12">
-                                <h4 class="title">Send Your Massage</h4>
-                                <form id="contact-form" action="https://demo.hasthemes.com/christ-preview/christ/mail.php" method="post">
-                                    <input type="text" name="name" placeholder="Your Name">
-                                    <input type="email" name="email" placeholder="Your Email">
-                                    <textarea name="message" placeholder="Your Message"></textarea>
-                                    <input type="submit" value="Submit">
-                                </form>
-                                <p class="form-messege"></p>
-                            </div>
-
+                            
                         </div>
-                    </div>
+                        
+                    </div><!-- Checkout Accordion Start -->
                     
                 </div>
-            
+                
             </div>
         </div>
-    </div><!-- Contact Section End-->
-    
-    <!-- Contact Map -->
-    <div style="background-color: white; width: 100%; height: 1050px;"></div>
-    
+    </div>
+
        
     <!-- Footer Section Start-->
     <div class="footer-section section bg-dark">
@@ -333,10 +422,18 @@
 <script src="js/ajax-mail.js"></script>
 <!-- Main JS -->
 <script src="js/main.js"></script>
-<!-- Google Map Api -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8NZyPnVvQYVEMGkt-rmF-oXDSuMs9GFo"></script>
-<script src="js/map.js"></script>
-
+<script>
+    // Wait for the DOM to load
+    document.addEventListener("DOMContentLoaded", function () {
+        const errorDiv = document.getElementById("login-error");
+        if (errorDiv) {
+            setTimeout(() => {
+                errorDiv.style.display = "none";
+            }, 5000); // 5000ms = 5 seconds
+        }
+    });
+</script>
 </body>
+
 
 </html>
