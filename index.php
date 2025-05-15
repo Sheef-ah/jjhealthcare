@@ -544,10 +544,10 @@ include('session.php');
 
                                 <ul>
                                     <li><a href="about.html">About us</a></li>
-                                    <li><a href="#">Useful Links</a></li>
+                                    <li><a href="useful-links.html">Useful Links</a></li>
                                     <li><a href="authorize-reseller.html">Authorized Resellers</a></li>
-                                    <li><a href="#">Terms and Conditions</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="terms-and-conditions.html">Terms and Conditions</a></li>
+                                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
                                     <li><a href="#">FAQ's</a></li>
                                     <li><a href="contact.html">Contact us</a></li>
                                 </ul>  
