@@ -216,7 +216,7 @@ if (isset($_POST['register'])) {
                                 <li><a href="index.php">home</a></li>
                                 <li><a href="#">Our Brands</a>
                                     <ul class="sub-menu">
-                                        <li><a href="#">Prohall (coming soon)</a></li>
+                                        <li><a href="prohall.php">Prohall</a></li>
                                         <li><a href="#">Amaeyya (coming soon)</a></li>
                                     </ul>
                                 </li>

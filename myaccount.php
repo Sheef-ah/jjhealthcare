@@ -229,7 +229,7 @@ if (isset($_POST['savepassword'])) {
                                 <li><a href="index.php">home</a></li>
                                 <li><a href="#">Our Brands</a>
                                     <ul class="sub-menu">
-                                        <li><a href="#">Prohall (coming soon)</a></li>
+                                        <li><a href="prohall.php">Prohall</a></li>
                                         <li><a href="#">Amaeyya (coming soon)</a></li>
                                     </ul>
                                 </li>
@@ -395,7 +395,7 @@ if (isset($_POST['savepassword'])) {
                             </thead>
                             
                             <!-- Table Body -->
-                            <tbody>
+<!--                             <tbody>
                                 <tr>
                                     <td><span class="cart-number">1</span></td>
                                     <td><span class="cart-number">30/04/2025</span></td>
@@ -424,7 +424,7 @@ if (isset($_POST['savepassword'])) {
                                     <td><div class="">3</div></td>
                                     <td><p class="cart-price-total">$85.99</p></td>
                                 </tr>
-                            </tbody>
+                            </tbody> -->
                         </table>
                             </form>
                         </div>

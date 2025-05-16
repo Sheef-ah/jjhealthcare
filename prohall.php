@@ -6,7 +6,7 @@ include('session.php');
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>JJHEALTHCARE</title>
+    <title>JJHEALTHCARE - Prohall</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -137,16 +137,11 @@ include('session.php');
                         <!-- Main Menu -->
                         <nav id="main-menu" class="main-menu">
                             <ul>
-                                <li class="active"><a href="index.php">home</a></li>
-                                <li><a href="#">Our Brands</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="prohall.php">Prohall</a></li>
-                                        <li><a href="#">Amaeyya (coming soon)</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="about.html">About</a></li>
-                                <!-- <li><a href="blog.html">Blogs</a></li> -->
-                                <li><a href="contact.php">contact</a></li>
+                                <li class="active"><a href="#">Shampoos & Conditioners</a></li>
+                                <li><a href="about.html">Hair Masks, Leave-Ins, Sprays & Oils</a></li>
+                                <li><a href="contact.php">Hair Supplements & Treatments</a></li>
+                                <li><a href="contact.php">Hair Color</a></li>
+                                <li><a href="contact.php">Bleaching</a></li>
                             </ul>
                         </nav>
 
@@ -182,15 +177,7 @@ include('session.php');
     <div class="hero-slider section fix">
 
         <!-- Hero Slide Item Start-->
-        <div class="hero-item" style="background-image: url(img/hero/1.jpg)">
-
-            <!-- Hero Content Start-->
-            <div class="hero-content text-center m-auto">
-                <h1>J & J Healthcare</h1>
-                <p>Your Gateway to Authentic Organic and Natural Beauty</p>
-                <a href="about.html">LEARN MORE</a>
-
-            </div><!-- Hero Content End-->
+        <div class="hero-item" style="background-image: url(img/prohall-logo.jpg)">
 
 
         </div><!-- Hero Slide Item End-->
@@ -199,49 +186,6 @@ include('session.php');
 
     <!-- Home About Section Start-->
 
-    <div class="testimonial-section section bg-gray pt-100 pb-65">
-        <div class="container">
-           
-            <!-- Section Title Start-->
-            <div class="row">
-                <div class="section-title text-center col mb-60">
-                    <h1>Welcome to J & J Healthcare:</h1>
-                    <h2>Your Gateway to Authentic Organic and Natural Beauty</h2>
-                </div>
-            </div><!-- Section Title End-->
-            
-            <div class="row">
-                <div class="col-lg-8 col-md-10 col-12 ml-auto mr-auto">
-                    
-                    <!-- Testimonial Slider Start -->
-                    <div class="testimonial-slider text-center">
-                        
-                        <!-- Single Testimonial -->
-                        <div class="single-testimonial">
-                            <p>At J & J Healthcare, we believe that true beauty begins with nature. That’s why we are proud to bring the finest organic and natural cosmetic products to the people of Mauritius. Our mission is simple — to connect you with premium beauty solutions that prioritize your health, the environment, and exceptional results</p>
-                            <div class="section-title text-center col mb-40" style="margin-top: 60px;">
-                                <h1>Our Brands</h1>
-                            </div>
-                            <h3 class="mb-30">Amaeyya — Organic Wellness from India</h3>
-                            <div class="mb-60" style="display: flex; align-items: center; gap:50px">
-                                <p>Immerse yourself in the purity of Amaeyya’s organic cosmetic range, crafted using time-honored Indian traditions and natural ingredients. Amaeyya products are designed to nurture your skin and body with the finest organic extracts, free from harmful chemicals. Experience the magic of nature’s bounty with skincare solutions that truly care.</p>
-                                <img style="width: 175px; height: 175px" src="img/amaeyya-logo.jpg"/>
-                            </div>
-
-                            <h3 class="mb-30">Prohall — Brazilian Haircare Excellence</h3>
-                            <div style="display: flex; flex-direction: row-reverse; align-items: center; gap:50px;">
-                                <p>Discover the transformative power of Prohall’s advanced haircare products from Brazil. Whether you seek to revitalize damaged hair, maintain vibrant curls, or achieve salon-quality smoothness, Prohall offers innovative solutions enriched with natural ingredients to give your hair the care it deserves.</p>
-                                <img style="width: 175px; height: 175px" src="img/prohall-logo.jpg"/>
-                            </div>
-                        </div>
-                        
-                    </div><!-- Testimonial Slider End -->
-                    
-                </div>
-            </div>
-            
-        </div>
-    </div>
 
     <!-- Home About Section End-->
     
@@ -253,7 +197,7 @@ include('session.php');
             <!-- Section Title Start-->
             <div class="row">
                 <div class="section-title text-center col mb-60">
-                    <h1>Featured Products</h1>
+                    <h1>Products List</h1>
                 </div>
             </div><!-- Section Title End-->
             
