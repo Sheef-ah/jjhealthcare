@@ -1,7 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="en">
 
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -25,6 +24,16 @@
     <link rel="stylesheet" href="style.css">
     <!-- Modernizer JS -->
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+    (function(){
+        emailjs.init({
+            publicKey: "ZgZY6B7ho6xuDWM5e",
+        });
+    })();
+    </script>
 </head>
 
 <body>
@@ -63,7 +72,14 @@
                                 <!-- Account Menu -->
                                 <div class="account-menu col-md-4 col-12">
                                     <ul>
-                                        <li><a href="#">My Account</a></li>
+                                    <?php
+                                        if(!empty($login_session)){
+                                            echo "<li><a href='myaccount.php'>My Account</a></li>";
+                                        }
+                                        else{
+                                           echo "<li><a href='login.php'>Login</a></li>"; 
+                                        }
+                                    ?>
                                         <li><a href="#" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span class="num">2</span></a>
                                             
                                             <!-- Mini Cart -->
@@ -138,7 +154,7 @@
                                 </li>
                                 <li><a href="about.html">About</a></li>
                                 <!-- <li><a href="blog.html">Blogs</a></li> -->
-                                <li class="active"><a href="contact.html">contact</a></li>
+                                <li class="active"><a href="contact.php">contact</a></li>
                             </ul>
                         </nav>
 
@@ -191,7 +207,7 @@
             <div class="row">
                 
                 <div class="col-xl-10 col-12 ml-auto mr-auto">
-                    
+                <div id="success"></div>
                     <div class="contact-wrapper">
                         <div class="row">
 
@@ -218,11 +234,11 @@
                             </div>
                             <div class="contact-form col-lg-7 col-12">
                                 <h4 class="title">Send Your Massage</h4>
-                                <form id="contact-form" action="https://demo.hasthemes.com/christ-preview/christ/mail.php" method="post">
-                                    <input type="text" name="name" placeholder="Your Name">
-                                    <input type="email" name="email" placeholder="Your Email">
-                                    <textarea name="message" placeholder="Your Message"></textarea>
-                                    <input type="submit" value="Submit">
+                                <form id="contactForm" action="" method="post">
+                                    <input type="text" name="name" id="name" placeholder="Your Name">
+                                    <input type="email" name="email" id="email" placeholder="Your Email">
+                                    <textarea name="message" id="message" placeholder="Your Message"></textarea>
+                                    <input type="submit" value="Submit" name="submit" id="submit">
                                 </form>
                                 <p class="form-messege"></p>
                             </div>
@@ -271,7 +287,7 @@
                                     <li><a href="terms-and-conditions.html">Terms and Conditions</a></li>
                                     <li><a href="privacy-policy.html">Privacy Policy</a></li>
                                     <li><a href="#">FAQ's</a></li>
-                                    <li><a href="contact.html">Contact us</a></li>
+                                    <li><a href="contact.php">Contact us</a></li>
                                 </ul>  
 
                             </div>
@@ -336,6 +352,40 @@
 <!-- Google Map Api -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8NZyPnVvQYVEMGkt-rmF-oXDSuMs9GFo"></script>
 <script src="js/map.js"></script>
+<script>
+
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+    event.preventDefault();  // Prevents the form from submitting normally
+
+    var templateParams = {
+        subject: 'Query from Website - ' + document.getElementById("name").value,
+        message: document.getElementById("message").value,
+        email: document.getElementById("email").value
+    };
+
+    emailjs.send("service_dxhosq8", "template_ffa1dcv", templateParams)
+    .then(
+        function(response) {
+            document.getElementById("success").innerHTML = 
+                "<div id='login-error' class='alert alert-success'>Query Sent! We will get back to you as soon as we can. Thank You!</div>";
+                document.getElementById("contactForm").reset();
+                setTimeout(() => {
+                const alertBox = document.getElementById("login-error");
+                if (alertBox) alertBox.style.display = "none";
+            }, 5000);
+        },
+        function(error) {
+            document.getElementById("success").innerHTML = 
+                "<div id='login-error' class='alert alert-danger'>An error has occurred. Please try again.</div>";
+                document.getElementById("contactForm").reset();
+                setTimeout(() => {
+                const alertBox = document.getElementById("login-error");
+                if (alertBox) alertBox.style.display = "none";
+            }, 5000);
+        }
+    );
+});
+</script>
 
 </body>
 

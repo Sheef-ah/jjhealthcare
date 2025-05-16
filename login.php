@@ -222,7 +222,7 @@ if (isset($_POST['register'])) {
                                 </li>
                                 <li><a href="about.html">About</a></li>
                                 <!-- <li><a href="blog.html">Blogs</a></li> -->
-                                <li><a href="contact.html">contact</a></li>
+                                <li><a href="contact.php">contact</a></li>
                             </ul>
                         </nav>
 
@@ -360,7 +360,7 @@ if (isset($_POST['register'])) {
                                     <li><a href="terms-and-conditions.html">Terms and Conditions</a></li>
                                     <li><a href="privacy-policy.html">Privacy Policy</a></li>
                                     <li><a href="#">FAQ's</a></li>
-                                    <li><a href="contact.html">Contact us</a></li>
+                                    <li><a href="contact.php">Contact us</a></li>
                                 </ul>  
 
                             </div>
