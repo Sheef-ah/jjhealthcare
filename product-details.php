@@ -1,3 +1,19 @@
+<?php
+include('session.php');
+include('dbconnection.php'); // including database connection
+
+if (!empty($_GET['productid'])) {
+
+    $productid = $_GET['productid'];
+
+    $stmt = $conn->prepare("SELECT * FROM products WHERE ProductID = ?");
+    $stmt->bind_param("i", $productid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+
+}
+?>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -129,10 +145,10 @@
                         <!-- Main Menu -->
                         <nav id="main-menu" class="main-menu">
                             <ul>
-                                <li class="active"><a href="index.php">home</a></li>
+                                <li><a href="index.php">home</a></li>
                                 <li><a href="#">Our Brands</a>
                                     <ul class="sub-menu">
-                                        <li><a href="prohall.php">Prohall</a></li>
+                                        <li><a href="prohall.php?category1=8&category2=9">Prohall</a></li>
                                         <li><a href="#">Amaeyya (coming soon)</a></li>
                                     </ul>
                                 </li>
@@ -205,10 +221,7 @@
                     
                     <!-- Product Image -->
                     <div class="single-product-image product-image-slider fix">
-                        <div class="single-image"><img src="img/product/TESTIMAGE.png" alt=""></div>
-                        <div class="single-image"><img src="img/product-details/2.jpg" alt=""></div>
-                        <div class="single-image"><img src="img/product-details/3.jpg" alt=""></div>
-                        <div class="single-image"><img src="img/product-details/4.jpg" alt=""></div>
+                        <div class="single-image"><img src="<?php echo $row['Image']?>" alt=""></div>
                     </div>
                     
                 </div><!-- Product Image & Thumbnail End -->
@@ -217,7 +230,7 @@
                 <div class="single-product-content col-lg-5 col-12 mb-30">
                    
                     <!-- Title -->
-                    <h1 class="title">Product Name</h1>
+                    <h1 class="title"><?php echo $row['ProductName']?></h1>
                     
                     <!-- Product Rating -->
                     <span class="product-rating">
@@ -229,11 +242,11 @@
                     </span>
                     
                     <!-- Price -->
-                    <span class="product-price">Price</span>
+                    <span class="product-price">Rs <?php echo $row['Price']?>.00</span>
                     
                     <!-- Description -->
                     <div class="description">
-                        <p>description</p>
+                        <p><?php echo $row['Description']?></p>
                     </div>
                     
                     <!-- Quantity & Cart Button -->
@@ -247,47 +260,6 @@
                 </div><!-- Product Content End -->
                 
             </div><!-- Product Wrapper End-->
-            
-            <!-- Product Additional Info Start-->
-            <div class="row">
-               
-                <!-- Nav tabs -->
-                <div class="col-12 mt-30">
-                    <ul class="pro-info-tab-list nav">
-                        <li><a class="active" data-toggle="tab" href="#more-info">More info</a></li>
-                        <li><a data-toggle="tab" href="#data-sheet">Data sheet</a></li>
-                    </ul>
-                </div>
-
-                <!-- Tab panes -->
-                <div class="tab-content col-12">
-                   
-                    <div class="pro-info-tab tab-pane active" id="more-info">
-                        <p>in depth description</p>
-                    </div>
-                    
-                    <div class="pro-info-tab tab-pane" id="data-sheet">
-                        <table class="table table-bordered">
-                            <tbody>
-                                <tr class="odd">
-                                    <td>details</td>
-                                    <td>details</td>
-                                </tr>
-                                <tr class="even">
-                                    <td>details</td>
-                                    <td>details</td>
-                                </tr>
-                                <tr class="odd">
-                                    <td>details</td>
-                                    <td>details</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                </div>
-                
-            </div><!-- Product Additional Info End-->
             
         </div>
     </div><!-- Product Section End-->

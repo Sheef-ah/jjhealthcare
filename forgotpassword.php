@@ -177,7 +177,7 @@ if (isset($_POST['submit'])) {
                                 <li><a href="index.php">home</a></li>
                                 <li><a href="#">Our Brands</a>
                                     <ul class="sub-menu">
-                                        <li><a href="prohall.php">Prohall</a></li>
+                                        <li><a href="prohall.php?category1=8&category2=9">Prohall</a></li>
                                         <li><a href="#">Amaeyya (coming soon)</a></li>
                                     </ul>
                                 </li>

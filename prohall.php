@@ -1,5 +1,35 @@
 <?php
 include('session.php');
+include('dbconnection.php'); // including database connection
+
+if (!empty($_GET['category1']) && !empty($_GET['category2'])) {
+
+    $category1 = $_GET['category1'];
+    $category2 = $_GET['category2'];
+
+    $stmt = $conn->prepare("SELECT * FROM products WHERE CategoryID = ? OR CategoryID = ?");
+    $stmt->bind_param("ii", $category1, $category2);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+} elseif (!empty($_GET['category1'])) {
+
+    $category1 = $_GET['category1'];
+
+    $stmt = $conn->prepare("SELECT * FROM products WHERE CategoryID = ?");
+    $stmt->bind_param("i", $category1);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+} elseif (!empty($_GET['category2'])) {
+
+    $category2 = $_GET['category2'];
+
+    $stmt = $conn->prepare("SELECT * FROM products WHERE CategoryID = ?");
+    $stmt->bind_param("i", $category2);
+    $stmt->execute();
+    $result = $stmt->get_result();
+}
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -137,11 +167,11 @@ include('session.php');
                         <!-- Main Menu -->
                         <nav id="main-menu" class="main-menu">
                             <ul>
-                                <li class="active"><a href="#">Shampoos & Conditioners</a></li>
-                                <li><a href="about.html">Hair Masks, Leave-Ins, Sprays & Oils</a></li>
-                                <li><a href="contact.php">Hair Supplements & Treatments</a></li>
-                                <li><a href="contact.php">Hair Color</a></li>
-                                <li><a href="contact.php">Bleaching</a></li>
+                                <li><a href="prohall.php?category1=8&category2=9">Shampoos & Conditioners</a></li>
+                                <li><a href="prohall.php?category1=10&category2=11">Hair Masks, Leave-Ins, Sprays & Oils</a></li>
+                                <li><a href="prohall.php?category1=12&category2=13">Hair Supplements & Treatments</a></li>
+                                <li><a href="prohall.php?category1=14">Hair Color</a></li>
+                                <li><a href="prohall.php?category1=15">Bleaching</a></li>
                             </ul>
                         </nav>
 
@@ -203,258 +233,34 @@ include('session.php');
             
             <!-- Product Wrapper Start-->
             <div class="row">
-                
-                <!-- Product Start-->
-                <div class="col-lg-4 col-md-6 col-12 mb-60">
-                   
-                    <div class="product">
 
-                        <!-- Image Wrapper -->
-                        <div class="image">
-                            <!-- Image -->
-                            <a href="product-details.html" class="img"><img src="img/product/prohall_1.jpg" alt="Product"></a>
-                        </div>
-                        
-                        <!-- Content -->
-                        <div class="content">
-                            
-                            <!-- Head Content -->
-                            <div class="head fix">
-                               
-                                <!-- Title & Category -->
-                                <div class="title-category float-left">
-                                    <h5 class="title"><a href="product-details.html">Product Name</a></h5>
-                                    <a href="shop.html" class="category">Brand</a>
-                                </div>
-                                <!-- Price -->
-                                <div class="price float-right">
-                                    <span class="new">Price</span>
-                                    <!-- Old Price Mockup If Need -->
-                                    <!-- <span class="old">$46</span> -->
-                                </div>
-                                
-                            </div>
-                            
-                            <!-- Action Button -->
-                            <div class="action-button fix">
-                                <a href="#">add to cart</a>
-                            </div>
-                            
-                        </div>
-
-                    </div>
-                    
-                </div><!-- Product End-->
-                
-                <!-- Product Start-->
-                <div class="col-lg-4 col-md-6 col-12 mb-60">
-                   
-                    <div class="product">
-
-                        <!-- Image Wrapper -->
-                        <div class="image">
-                            <!-- Image -->
-                            <a href="product-details.html" class="img"><img src="img/product/prohall_2.jpg" alt="Product"></a>
-                        </div>
-                        
-                        <!-- Content -->
-                        <div class="content">
-                            
-                            <!-- Head Content -->
-                            <div class="head fix">
-                               
-                                <!-- Title & Category -->
-                                <div class="title-category float-left">
-                                    <h5 class="title"><a href="product-details.html">Product Name</a></h5>
-                                    <a href="shop.html" class="category">Brand</a>
-                                </div>
-                                <!-- Price -->
-                                <div class="price float-right">
-                                    <span class="new">Price</span>
-                                    <!-- Old Price Mockup If Need -->
-                                    <!-- <span class="old">$46</span> -->
-                                </div>
-                                
-                            </div>
-                            
-                            <!-- Action Button -->
-                            <div class="action-button fix">
-                                <a href="#">add to cart</a>
-                            </div>
-                            
-                        </div>
-
-                    </div>
-                    
-                </div><!-- Product End-->
-                
-                <!-- Product Start-->
-                <div class="col-lg-4 col-md-6 col-12 mb-60">
-                   
-                    <div class="product">
-
-                        <!-- Image Wrapper -->
-                        <div class="image">
-                            <!-- Image -->
-                            <a href="product-details.html" class="img"><img src="img/product/prohall_3.jpg" alt="Product"></a>
-                        </div>
-                        
-                        <!-- Content -->
-                        <div class="content">
-                            
-                            <!-- Head Content -->
-                            <div class="head fix">
-                               
-                                <!-- Title & Category -->
-                                <div class="title-category float-left">
-                                    <h5 class="title"><a href="product-details.html">Product Name</a></h5>
-                                    <a href="shop.html" class="category">Brand</a>
-                                </div>
-                                <!-- Price -->
-                                <div class="price float-right">
-                                    <span class="new">Price</span>
-                                    <!-- Old Price Mockup If Need -->
-                                    <!-- <span class="old">$46</span> -->
-                                </div>
-                                
-                            </div>
-                            
-                            <!-- Action Button -->
-                            <div class="action-button fix">
-                                <a href="#">add to cart</a>
-                            </div>
-                            
-                        </div>
-
-                    </div>
-                    
-                </div><!-- Product End-->
-                
-                <!-- Product Start-->
-                <div class="col-lg-4 col-md-6 col-12 mb-60">
-                   
-                    <div class="product">
-
-                        <!-- Image Wrapper -->
-                        <div class="image">
-                            <!-- Image -->
-                            <a href="product-details.html" class="img"><img src="img/product/amaeyya_1.jpg" alt="Product"></a>
-                        </div>
-                        
-                        <!-- Content -->
-                        <div class="content">
-                            
-                            <!-- Head Content -->
-                            <div class="head fix">
-                               
-                                <!-- Title & Category -->
-                                <div class="title-category float-left">
-                                    <h5 class="title"><a href="product-details.html">Product Name</a></h5>
-                                    <a href="shop.html" class="category">Brand</a>
-                                </div>
-                                <!-- Price -->
-                                <div class="price float-right">
-                                    <span class="new">Price</span>
-                                    <!-- Old Price Mockup If Need -->
-                                    <!-- <span class="old">$46</span> -->
-                                </div>
-                                
-                            </div>
-                            
-                            <!-- Action Button -->
-                            <div class="action-button fix">
-                                <a href="#">add to cart</a>
-                            </div>
-                            
-                        </div>
-
-                    </div>
-                    
-                </div><!-- Product End-->
-                
-                <!-- Product Start-->
-                <div class="col-lg-4 col-md-6 col-12 mb-60">
-                   
-                    <div class="product">
-
-                        <!-- Image Wrapper -->
-                        <div class="image">
-                            <!-- Image -->
-                            <a href="product-details.html" class="img"><img src="img/product/amaeyya_2.jpg" alt="Product"></a>
-                        </div>
-                        
-                        <!-- Content -->
-                        <div class="content">
-                            
-                            <!-- Head Content -->
-                            <div class="head fix">
-                               
-                                <!-- Title & Category -->
-                                <div class="title-category float-left">
-                                    <h5 class="title"><a href="product-details.html">Product Name</a></h5>
-                                    <a href="shop.html" class="category">Brand</a>
-                                </div>
-                                <!-- Price -->
-                                <div class="price float-right">
-                                    <span class="new">Price</span>
-                                    <!-- Old Price Mockup If Need -->
-                                    <!-- <span class="old">$46</span> -->
-                                </div>
-                                
-                            </div>
-                            
-                            <!-- Action Button -->
-                            <div class="action-button fix">
-                                <a href="#">add to cart</a>
-                            </div>
-                            
-                        </div>
-
-                    </div>
-                    
-                </div><!-- Product End-->
-                
-                <!-- Product Start-->
-                <div class="col-lg-4 col-md-6 col-12 mb-60">
-                   
-                    <div class="product">
-
-                        <!-- Image Wrapper -->
-                        <div class="image">
-                            <!-- Image -->
-                            <a href="product-details.html" class="img"><img src="img/product/amaeyya_3.jpg" alt="Product"></a>
-                        </div>
-                        
-                        <!-- Content -->
-                        <div class="content">
-                            
-                            <!-- Head Content -->
-                            <div class="head fix">
-                               
-                                <!-- Title & Category -->
-                                <div class="title-category float-left">
-                                    <h5 class="title"><a href="product-details.html">Product Name</a></h5>
-                                    <a href="shop.html" class="category">Brand</a>
-                                </div>
-                                <!-- Price -->
-                                <div class="price float-right">
-                                    <span class="new">Price</span>
-                                    <!-- Old Price Mockup If Need -->
-                                    <!-- <span class="old">$46</span> -->
-                                </div>
-                                
-                            </div>
-                            
-                            <!-- Action Button -->
-                            <div class="action-button fix">
-                                <a href="#">add to cart</a>
-                            </div>
-                            
-                        </div>
-
-                    </div>
-                    
-                </div><!-- Product End-->
+            <?php
+                if ($result && $result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        echo '<div class="col-lg-4 col-md-6 col-12 mb-60">';
+                        echo '<div class="product">';
+                        echo '<div class="image">';
+                        echo '<a href="product-details.php?productid='.$row['ProductID'].'" class="img"><img src="'.$row['Image'].'" alt="Product"></a>';
+                        echo '</div>';
+                        echo '<div class="content">';
+                        echo '<div class="head fix">';
+                        echo '<div class="title-category float-left">';
+                        echo '<h5 class="title"><a href="product-details.php?productid='.$row['ProductID'].'">'.$row['ProductName'].'</a></h5>';
+                        echo '<a href="" class="category">Prohall</a>';
+                        echo '</div>';
+                        echo '<div class="price float-right">';
+                        echo '<span class="new">Rs '.$row['Price'].'.00</span>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '<div class="action-button fix">';
+                        echo '<a href="#">add to cart</a>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                    }
+                } 
+            ?>
                 
             </div><!-- Product Wrapper End-->
             
