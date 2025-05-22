@@ -300,7 +300,7 @@ if (isset($_POST['submit'])) {
                                     <li><a href="authorize-reseller.html">Authorized Resellers</a></li>
                                     <li><a href="terms-and-conditions.html">Terms and Conditions</a></li>
                                     <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                                    <li><a href="#">FAQ's</a></li>
+                                    <li><a href="faq.html">FAQ's</a></li>
                                     <li><a href="contact.php">Contact us</a></li>
                                 </ul>  
 

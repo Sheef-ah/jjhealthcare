@@ -260,6 +260,10 @@ if (!empty($_GET['category1']) && !empty($_GET['category2'])) {
                         echo '</div>';
                     }
                 } 
+
+                else{
+                    echo '<p class="section-title text-center col mb-60">No product available.</p>';
+                }
             ?>
                 
             </div><!-- Product Wrapper End-->
@@ -298,7 +302,7 @@ if (!empty($_GET['category1']) && !empty($_GET['category2'])) {
                                     <li><a href="authorize-reseller.html">Authorized Resellers</a></li>
                                     <li><a href="terms-and-conditions.html">Terms and Conditions</a></li>
                                     <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                                    <li><a href="#">FAQ's</a></li>
+                                    <li><a href="faq.html">FAQ's</a></li>
                                     <li><a href="contact.php">Contact us</a></li>
                                 </ul>  
 

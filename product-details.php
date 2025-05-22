@@ -295,7 +295,7 @@ if (!empty($_GET['productid'])) {
                                     <li><a href="#">Authorized Resellers</a></li>
                                     <li><a href="#">Terms and Conditions</a></li>
                                     <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="#">FAQ's</a></li>
+                                    <li><a href="faq.html">FAQ's</a></li>
                                     <li><a href="#">Contact us</a></li>
                                 </ul>  
 
