@@ -63,7 +63,13 @@
                                 <!-- Account Menu -->
                                 <div class="account-menu col-md-4 col-12">
                                     <ul>
-                                        <li><a href="#">My Account</a></li>
+                                    <?php
+                                        if (!empty($login_session)) {
+                                            echo "<li><a href='myaccount.php'>My Account</a></li>";
+                                        }else {
+                                            echo "<li><a href='login.php'>Login</a></li>";
+                                        }
+                                    ?>
                                         <li><a href="#" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span class="num">2</span></a>
                                             
                                             <!-- Mini Cart -->
@@ -136,7 +142,7 @@
                                         <li><a href="#">Amaeyya (coming soon)</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="about.html">About</a></li>
+                                <li><a href="about.php">About</a></li>
                                 <!-- <li><a href="blog.html">Blogs</a></li> -->
                                 <li><a href="contact.php">contact</a></li>
                             </ul>
@@ -305,80 +311,99 @@
     </div>
     <!-- Need Help End -->
 
-    <!-- Footer Section Start-->
-    <div class="footer-section section bg-dark">
-        <div class="container">
-            
-            <div class="row">
-                <div class="col">
+    
 
-                    <!-- Footer Top Start -->
-                    <div class="footer-top section pt-80 pb-50">
-                        <div class="row">
+    <div class="container">    
+        <div id="accordion" class="section pt-60 pb-60">
 
-                            <!-- Footer Widget -->
-                            <div class="footer-widget col-lg-4 col-md-6 col-12 mb-40">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h3 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                            aria-expanded="true" aria-controls="collapseOne">
+                        About the Products
+                    </button>
+                    </h5>
+                </div>
 
-                                <img class="footer-logo" src="img/logo-jj.png" alt="logo" style="width: 113px; height: 132px;">
-                                <p>we believe that true beauty begins with nature. That’s why we are proud to bring the finest organic and natural cosmetic products to the people of Mauritius. Our mission is simple — to connect you with premium beauty solutions that prioritize your health, the environment, and exceptional results.</p>
-
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                    <div class="section pt-20 pb-20">
+                            <div class="container">
+                                <h4>1. What are Amaeyya products?</h4>
+                                <p>Amaeyya offers a premium range of skincare and wellness products, combining natural ingredients with advanced formulations. From facial serums to body care, these products are crafted to nourish, rejuvenate, and enhance skin health.</p>
                             </div>
-
-                            <!-- Footer Widget -->
-                            <div class="footer-widget col-lg-2 col-md-3 col-12 mb-40">
-
-                                <h4 class="widget-title">Information</h4>
-
-                                <ul>
-                                    <li><a href="about.html">About us</a></li>
-                                    <li><a href="useful-links.html">Useful Links</a></li>
-                                    <li><a href="authorize-reseller.html">Authorized Resellers</a></li>
-                                    <li><a href="terms-and-conditions.html">Terms and Conditions</a></li>
-                                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                                    <li><a href="faq.html">FAQ's</a></li>
-                                    <li><a href="contact.php">Contact us</a></li>
-                                </ul>  
-
-                            </div>
-
-                            <!-- Footer Widget -->
-                            <div class="footer-widget col-lg-2 col-md-3 col-12 mb-40">
-
-                                <h4 class="widget-title">Our Brands</h4>
-
-                                <ul>
-                                    <li><a href="#">Prohall</a></li>
-                                    <li><a href="#">Amaeyya</a></li>
-                                </ul>  
-
-                            </div>
-
-                            <!-- Footer Widget -->
-                            <div class="footer-widget col-lg-4 col-md-6 col-12 mb-40">
-
-                                <h4 class="widget-title">Contact Us</h4>
-
-                                <ul>
-                                    <li><span>Address:</span> J & J Healthcare Ltd, SSR Avenue, Phoenix</li>
-                                    <li><span>Phone:</span> + 230 5 943 4000</li>
-                                    <li><span>Email:</span> info@jjhealthcareltd.com</li>
-                                </ul>  
-
-                            </div>
-
                         </div>
-                    </div><!-- Footer Top End -->
-                    
-                    <!-- Footer Bottom Start -->
-                    <div class="footer-bottom section text-center">
-                        <p><a href="#">JJHEALTHCARE</a></p>
-                    </div><!-- Footer Bottom End -->
 
+                        <div class="section pt-20 pb-20">
+                            <div class="container">
+                                <h4>2. What is Prohall?</h4>
+                                <p>Prohall is a globally respected Brazilian brand known for its high-performance haircare solutions, including keratin treatments, smoothing systems, masks, and professional salon products.</p>
+                            </div>
+                        </div>
+
+                        <div class="section pt-20 pb-20">
+                            <div class="container">
+                                <h4>3. Are these products suitable for all hair and skin types?</h4>
+                                <p>Yes. Both Amaeyya and Prohall offer formulations for different hair and skin types. Please refer to individual product descriptions or contact us for personalised advice.</p>
+                            </div>
+                        </div>
+
+                        <div class="section pt-20 pb-20">
+                            <div class="container">
+                                <h4>4. Are your products authentic?</h4>
+                                <p>Absolutely. J & J Healthcare Ltd is the sole authorised importer of Amaeyya and Prohall in Mauritius. All products are 100% genuine and imported directly from certified manufacturers.</p>
+                            </div>
+                        </div>
+
+                        <div class="section pt-20 pb-20">
+                            <div class="container">
+                                <h4>5. Do you offer professional salon sizes?</h4>
+                                <p>Yes. We offer both retail and professional salon-size formats for selected products, especially from the Prohall range.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
+
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                        Accordion Item #2
+                    </button>
+                    </h5>
+                </div>
+
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                    <div class="card-body">
+                    This is the second item's accordion body.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingThree">
+                    <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
+                            aria-expanded="false" aria-controls="collapseThree">
+                        Accordion Item #3
+                    </button>
+                    </h5>
+                </div>
+
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                    <div class="card-body">
+                    This is the third item's accordion body.
+                    </div>
+                </div>
+            </div>
         </div>
-    </div><!-- Footer Section End-->
+    </div>
+
+
+    <?php include('footer-section.php') ?>
     
 
 </div><!-- Main Wrapper End -->

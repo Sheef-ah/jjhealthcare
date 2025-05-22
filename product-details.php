@@ -152,7 +152,7 @@ if (!empty($_GET['productid'])) {
                                         <li><a href="#">Amaeyya (coming soon)</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="about.html">About</a></li>
+                                <li><a href="about.php">About</a></li>
                                 <!-- <li><a href="blog.html">Blogs</a></li> -->
                                 <li><a href="contact.php">contact</a></li>
                             </ul>

@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>JJHEALTHCARE - Useful Links</title>
+    <title>JJHEALTHCARE - Privacy Policy</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -63,7 +63,13 @@
                                 <!-- Account Menu -->
                                 <div class="account-menu col-md-4 col-12">
                                     <ul>
-                                        <li><a href="#">My Account</a></li>
+                                    <?php
+                                        if (!empty($login_session)) {
+                                            echo "<li><a href='myaccount.php'>My Account</a></li>";
+                                        }else {
+                                            echo "<li><a href='login.php'>Login</a></li>";
+                                        }
+                                    ?>
                                         <li><a href="#" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span class="num">2</span></a>
                                             
                                             <!-- Mini Cart -->
@@ -136,7 +142,7 @@
                                         <li><a href="#">Amaeyya (coming soon)</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="about.html">About</a></li>
+                                <li><a href="about.php">About</a></li>
                                 <!-- <li><a href="blog.html">Blogs</a></li> -->
                                 <li><a href="contact.php">contact</a></li>
                             </ul>
@@ -177,121 +183,131 @@
                 
                 <!-- Page Title Start -->
                 <div class="page-title text-center col">
-                    <h1>Useful Links</h1>
+                    <h1>Privacy Policy</h1>
                 </div><!-- Page Title End -->
                 
             </div>
         </div>
     </div><!-- Page Banner Section End-->
-    
-       
-    <div class="Useful-links-section pt-120 pb-90">
+
+    <div class="section pt-100 pb-90">
         <div class="container">
-            <div class="row flex-row">
-                                
-                <!-- Mission Content -->
-                <div class="about-content col-lg-12 col-12 mb-30 text-center">
-                    <h2>About <span>J &amp; J Healthcare</span></h2>
-                    <p>Learn who we are, our story, and our commitment to quality healthcare and beauty solutions in Mauritius.</p>
-                    <p><a href="#">Link to Homepage</a></p>
-
-                        <h3>Amaeyya (India): Natural skincare and wellness products</h3>
-                        <div class="video-grid">
-                            <iframe src="https://www.youtube.com/embed/R-MxFsImyWU"></iframe>
-                            <iframe src="https://www.youtube.com/embed/Ms3DZU-f7WE"></iframe>
-                            <iframe src="https://www.youtube.com/embed/EBtAhxglgRI"></iframe>
-                            <iframe src="https://www.youtube.com/embed/VKo02PVQ3wU"></iframe>
-                            <iframe src="https://www.youtube.com/embed/dhn53X6XyAE"></iframe>
-                            <iframe src="https://www.youtube.com/embed/_foPoDfcvSw"></iframe>
-                            <iframe src="https://www.youtube.com/embed/NxcBLobRTnA"></iframe>
-                            <iframe src="https://www.youtube.com/embed/W_X_agQttVc"></iframe>
-                            <iframe src="https://www.youtube.com/embed/RJHGhJQWgm4"></iframe>
-                            <iframe src="https://www.youtube.com/embed/sA-mopEsOlI"></iframe>
-                        </div>
-
-                    <h3>Prohall (Brazil): Premium haircare solutions and salon-grade treatments</h3>
-                    <a href="https://www.youtube.com/@prohallprofessional/shorts" target="_blank">Prohall YouTube Shorts Channel</a>
-                </div>
-                
-            </div>
+            <h2>J &amp; J Healthcare Ltd - </strong> <a href="https://www.jjhealthcareltd.com" target="_blank">www.jjhealthcareltd.com</a></h2>
+            <p>At J &amp; J Healthcare Ltd, we value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you use our website or purchase Amaeyya and Prohall products in Mauritius.</p>
         </div>
     </div>
 
-       
-    <!-- Footer Section Start-->
-    <div class="footer-section section bg-dark">
+    <div class="section pt-30 pb-30">
         <div class="container">
-            
-            <div class="row">
-                <div class="col">
-
-                    <!-- Footer Top Start -->
-                    <div class="footer-top section pt-80 pb-50">
-                        <div class="row">
-
-                            <!-- Footer Widget -->
-                            <div class="footer-widget col-lg-4 col-md-6 col-12 mb-40">
-
-                                <img class="footer-logo" src="img/logo-jj.png" alt="logo" style="width: 113px; height: 132px;">
-                                <p>we believe that true beauty begins with nature. That’s why we are proud to bring the finest organic and natural cosmetic products to the people of Mauritius. Our mission is simple — to connect you with premium beauty solutions that prioritize your health, the environment, and exceptional results.</p>
-
-                            </div>
-
-                            <!-- Footer Widget -->
-                            <div class="footer-widget col-lg-2 col-md-3 col-12 mb-40">
-
-                                <h4 class="widget-title">Information</h4>
-
-                                <ul>
-                                    <li><a href="about.html">About us</a></li>
-                                    <li><a href="useful-links.html">Useful Links</a></li>
-                                    <li><a href="authorize-reseller.html">Authorized Resellers</a></li>
-                                    <li><a href="terms-and-conditions.html">Terms and Conditions</a></li>
-                                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                                    <li><a href="faq.html">FAQ's</a></li>
-                                    <li><a href="contact.php">Contact us</a></li>
-                                </ul>  
-
-                            </div>
-
-                            <!-- Footer Widget -->
-                            <div class="footer-widget col-lg-2 col-md-3 col-12 mb-40">
-
-                                <h4 class="widget-title">Our Brands</h4>
-
-                                <ul>
-                                    <li><a href="#">Prohall</a></li>
-                                    <li><a href="#">Amaeyya</a></li>
-                                </ul>  
-
-                            </div>
-
-                            <!-- Footer Widget -->
-                            <div class="footer-widget col-lg-4 col-md-6 col-12 mb-40">
-
-                                <h4 class="widget-title">Contact Us</h4>
-
-                                <ul>
-                                    <li><span>Address:</span> J & J Healthcare Ltd, SSR Avenue, Phoenix</li>
-                                    <li><span>Phone:</span> + 230 5 943 4000</li>
-                                    <li><span>Email:</span> info@jjhealthcareltd.com</li>
-                                </ul>  
-
-                            </div>
-
-                        </div>
-                    </div><!-- Footer Top End -->
-                    
-                    <!-- Footer Bottom Start -->
-                    <div class="footer-bottom section text-center">
-                        <p><a href="#">JJHEALTHCARE</a></p>
-                    </div><!-- Footer Bottom End -->
-
-                </div>
-            </div>
-            
+            <h4>1. Who We Are</h4>
+            <p>J &amp; J Healthcare Ltd is the sole authorised importer and distributor of Amaeyya and Prohall products in Mauritius. Our website <strong>www.jjhealthcareltd.com</strong> is intended to serve customers and resellers locally, offering access to genuine beauty and personal care products.</p>
         </div>
-    </div><!-- Footer Section End-->
+    </div>
+
+    <div class="section pt-30 pb-30">
+        <div class="container">
+            <h4>2. Information We Collect</h4>
+            <ul>
+            <li>Full name</li>
+            <li>Contact number</li>
+            <li>Email address</li>
+            <li>Delivery address</li>
+            <li>Payment details (secured via third-party processors)</li>
+            <li>Order history and preferences</li>
+            <li>IP address and browsing behaviour (for analytics)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section pt-30 pb-30">
+        <div class="container">
+            <h4>3. How We Use Your Information</h4>
+            <ul>
+                <li>To process and deliver your orders</li>
+                <li>To provide customer service and respond to inquiries</li>
+                <li>To send order confirmations and tracking updates</li>
+                <li>To improve user experience and website performance</li>
+                <li>To send promotional offers (with your consent)</li>
+            </ul>
+            <p>We do not sell, rent, or trade your personal data to third parties.</p>
+        </div>
+    </div>
+
+    <div class="section pt-30 pb-30">
+        <div class="container">
+            <h4>4. Data Security</h4>
+            <p>We implement robust security measures, including SSL encryption and secure payment gateways, to protect your personal data. Access to sensitive information is restricted to authorised personnel only.</p>
+        </div>
+    </div>
+
+    <div class="section pt-30 pb-30">
+        <div class="container">
+            <h4>5. Cookies &amp; Tracking</h4>
+            <p>We use cookies and analytics tools (e.g. Google Analytics) to understand website usage and improve functionality. You may manage your cookie preferences through your browser settings.</p>
+        </div>
+    </div>
+
+    <div class="section pt-30 pb-30">
+        <div class="container">
+            <h4>6. Third-Party Services</h4>
+            <p>Payments are processed via secure third-party platforms. We are not responsible for the privacy practices of these providers. We recommend reviewing their privacy policies directly.</p>
+        </div>
+    </div>
+
+    <div class="section pt-30 pb-30">
+        <div class="container">
+            <h4>7. Sharing Website Content</h4>
+            <p>All content on <strong>www.jjhealthcareltd.com</strong>—including product descriptions, images, graphics, videos, and logos—is protected under the Copyright Act 2014 of Mauritius and international intellectual property laws.</p>
+            <p>You may not:</p>
+            <ul>
+                <li>Copy, reproduce, or redistribute website content for commercial purposes</li>
+                <li>Modify, edit, or republish any content without written permission</li>
+                <li>Use our brand name, logos, or product visuals in your own marketing or sales materials without approval</li>
+            </ul>
+            <p>Sharing links to our website on social media or messaging platforms is permitted, provided proper credit is given and content is not altered or misrepresented.</p>
+        </div>
+    </div>
+
+    <div class="section pt-30 pb-30">
+        <div class="container">
+            <h4>8. Intellectual Property Notice</h4>
+            <p>All trademarks, brand names, and intellectual property related to Amaeyya, Prohall, and J &amp; J Healthcare Ltd are protected under applicable Mauritian laws. Any unauthorised use will be subject to legal action.</p>
+        </div>
+    </div>
+
+    <div class="section pt-30 pb-30">
+        <div class="container">
+            <h4>9. Your Rights Under Mauritian Law</h4>
+            <p>Under Mauritius’ Data Protection Act 2017, you have the right to:</p>
+            <ul>
+                <li>Access, correct, or delete your personal data</li>
+                <li>Withdraw consent at any time</li>
+                <li>Lodge a complaint with the Data Protection Commissioner if you believe your data has been misused</li>
+            </ul>
+            <p>To exercise your rights, contact us at <a href="mailto:info@jjhealthcare.mu">info@jjhealthcare.mu</a>.</p>
+        </div>
+    </div>
+
+    <div class="section pt-30 pb-30">
+        <div class="container">
+            <h4>10. Changes to this Policy</h4>
+            <p>We reserve the right to update this policy to reflect changes in our practices or legal obligations. The latest version will always be posted on our website.</p>
+        </div>
+    </div>
+
+    <div class="section pt-30 pb-30">
+        <div class="container">
+            <h4>11. Contact Information</h4>
+            <p>If you have any questions about this Privacy Policy or how your data is handled, please contact us:</p>
+            <ul>
+                <li>📧 <a href="mailto:info@jjhealthcareltd.com">info@jjhealthcareltd.com</a></li>
+                <li>🌐 <a href="https://www.jjhealthcareltd.com" target="_blank">www.jjhealthcareltd.com</a></li>
+                <li>📞 +230 5 943 4000</li>
+            </ul>
+        </div>
+    </div>
+
+    <?php include('footer-section.php') ?>
     
 
 </div><!-- Main Wrapper End -->

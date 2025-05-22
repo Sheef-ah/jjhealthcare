@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>JJHEALTHCARE - Terms and Conditions</title>
+    <title>JJHEALTHCARE - About</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -63,7 +63,13 @@
                                 <!-- Account Menu -->
                                 <div class="account-menu col-md-4 col-12">
                                     <ul>
-                                        <li><a href="#">My Account</a></li>
+                                    <?php
+                                        if (!empty($login_session)) {
+                                            echo "<li><a href='myaccount.php'>My Account</a></li>";
+                                        }else {
+                                            echo "<li><a href='login.php'>Login</a></li>";
+                                        }
+                                    ?>
                                         <li><a href="#" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span class="num">2</span></a>
                                             
                                             <!-- Mini Cart -->
@@ -136,7 +142,7 @@
                                         <li><a href="#">Amaeyya (coming soon)</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="about.html">About</a></li>
+                                <li class="active"><a href="about.php">About</a></li>
                                 <!-- <li><a href="blog.html">Blogs</a></li> -->
                                 <li><a href="contact.php">contact</a></li>
                             </ul>
@@ -177,188 +183,128 @@
                 
                 <!-- Page Title Start -->
                 <div class="page-title text-center col">
-                    <h1>Terms and Conditions</h1>
+                    <h1>About us</h1>
                 </div><!-- Page Title End -->
                 
             </div>
         </div>
     </div><!-- Page Banner Section End-->
-
-    <div class="section pt-100 pb-90">
+    
+       
+    <!-- About Section Start-->
+    <div class="about-section section pt-120 pb-90">
         <div class="container">
-            <h2>J &amp; J Healthcare Ltd - </strong> <a href="https://www.jjhealthcareltd.com" target="_blank">www.jjhealthcareltd.com</a></h2>
-            <p>Welcome to the official website of J &amp; J Healthcare Ltd, the sole importer and distributor of Amaeyya and Prohall products in Mauritius. By accessing and using our website, you agree to comply with and be bound by the following Terms and Conditions. Please read them carefully before placing any order.</p>
-        </div>
-    </div>
-
-    <div class="section pt-20 pb-20">
-        <div class="container">
-            <h4>1. General</h4>
-            <ul>
-                <li>This website is operated by J &amp; J Healthcare Ltd, registered in Mauritius.</li>
-                <li>By using this site, you confirm that you are at least 18 years of age or have parental/guardian consent to purchase.</li>
-                <li>We reserve the right to update or change these Terms at any time. Continued use of the site signifies your acceptance of any changes.</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="section pt-20 pb-20">
-        <div class="container">
-            <h4>2. Product Information</h4>
-            <ul>
-                <li>All products listed under Amaeyya and Prohall are genuine and sourced directly through authorised international partners.</li>
-                <li>We strive to provide accurate descriptions and images. However, slight variations in packaging or formula may occur.</li>
-                <li>Prices are displayed in Mauritian Rupees (MUR) and are inclusive of applicable VAT, unless stated otherwise.</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="section pt-20 pb-20">
-        <div class="container">
-            <h4>3. Orders and Payments</h4>
-            <ul>
-                <li>Orders can be placed directly through our website. Once submitted, you will receive an order confirmation via email.</li>
-                <li>We accept secure online payment methods including JuiceByMCB, bank transfers, and cash on delivery.</li>
-                <li>Orders are processed only upon half payment confirmation, for orders above Rs. 3000.</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="section pt-20 pb-20">
-        <div class="container">
-            <h4>4. Shipping and Delivery</h4>
-            <ul>
-                <li>We deliver island-wide in Mauritius, for sales above Rs. 3000.</li>
-                <li>Standard delivery timeframe is 2 - 5 business days after payment confirmation, subject to availability.</li>
-                <li>Delivery charges apply and will be calculated at checkout.</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="section pt-20 pb-20">
-        <div class="container">
-            <h4>5. Returns and Exchanges</h4>
-            <ul>
-                <li>Due to the nature of personal care products, we do not accept returns once items are opened or used.</li>
-                <li>If you receive a damaged, defective, or incorrect item, please notify us within 48 hours of receipt for replacement or store credit.</li>
-                <li>All returns must be in original condition and packaging.</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="section pt-20 pb-20">
-        <div class="container">
-            <h4>6. User Responsibilities</h4>
-            <ul>
-                <li>You agree to use this website for lawful purposes only.</li>
-                <li>You are responsible for maintaining the confidentiality of your login credentials and any activities under your account.</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="section pt-20 pb-20">
-        <div class="container">
-            <h4>7. Limitation of Liability</h4>
-            <ul>
-                <li>J &amp; J Healthcare Ltd is not liable for any indirect, incidental, or consequential damages resulting from the use of our products or website.</li>
-                <li>Users are advised to read product labels and perform patch tests where applicable. We are not responsible for allergic or adverse reactions.</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="section pt-20 pb-20">
-        <div class="container">
-            <h4>8. Intellectual Property</h4>
-            <p>All content, including text, logos, images, and product information on this website, is the property of J &amp; J Healthcare Ltd or its partners and is protected by intellectual property laws.</p>
-        </div>
-    </div>
-
-    <div class="section pt-20 pb-20">
-        <div class="container">
-            <h4>9. Contact Us</h4>
-            <p>If you have any questions or concerns regarding these Terms and Conditions, please contact us at:</p>
-            <ul>
-                <li>📧 <a href="mailto:info@jjhealthcareltd.com">info@jjhealthcareltd.com</a></li>
-                <li>🌐 <a href="https://www.jjhealthcareltd.com" target="_blank">www.jjhealthcareltd.com</a></li>
-                <li>📞 +230 5 943 4000</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Footer Section Start-->
-    <div class="footer-section section bg-dark">
-        <div class="container">
-            
-            <div class="row">
-                <div class="col">
-
-                    <!-- Footer Top Start -->
-                    <div class="footer-top section pt-80 pb-50">
-                        <div class="row">
-
-                            <!-- Footer Widget -->
-                            <div class="footer-widget col-lg-4 col-md-6 col-12 mb-40">
-
-                                <img class="footer-logo" src="img/logo-jj.png" alt="logo" style="width: 113px; height: 132px;">
-                                <p>we believe that true beauty begins with nature. That’s why we are proud to bring the finest organic and natural cosmetic products to the people of Mauritius. Our mission is simple — to connect you with premium beauty solutions that prioritize your health, the environment, and exceptional results.</p>
-
-                            </div>
-
-                            <!-- Footer Widget -->
-                            <div class="footer-widget col-lg-2 col-md-3 col-12 mb-40">
-
-                                <h4 class="widget-title">Information</h4>
-
-                                <ul>
-                                    <li><a href="about.html">About us</a></li>
-                                    <li><a href="useful-links.html">Useful Links</a></li>
-                                    <li><a href="authorize-reseller.html">Authorized Resellers</a></li>
-                                    <li><a href="terms-and-conditions.html">Terms and Conditions</a></li>
-                                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                                    <li><a href="faq.html">FAQ's</a></li>
-                                    <li><a href="contact.php">Contact us</a></li>
-                                </ul>  
-
-                            </div>
-
-                            <!-- Footer Widget -->
-                            <div class="footer-widget col-lg-2 col-md-3 col-12 mb-40">
-
-                                <h4 class="widget-title">Our Brands</h4>
-
-                                <ul>
-                                    <li><a href="#">Prohall</a></li>
-                                    <li><a href="#">Amaeyya</a></li>
-                                </ul>  
-
-                            </div>
-
-                            <!-- Footer Widget -->
-                            <div class="footer-widget col-lg-4 col-md-6 col-12 mb-40">
-
-                                <h4 class="widget-title">Contact Us</h4>
-
-                                <ul>
-                                    <li><span>Address:</span> J & J Healthcare Ltd, SSR Avenue, Phoenix</li>
-                                    <li><span>Phone:</span> + 230 5 943 4000</li>
-                                    <li><span>Email:</span> info@jjhealthcareltd.com</li>
-                                </ul>  
-
-                            </div>
-
-                        </div>
-                    </div><!-- Footer Top End -->
+            <div class="row flex-row-reverse">
+                
+                <!-- About Image -->
+                <div class="about-image col-lg-6 col-12 mb-30">
+                    <a class="video-popup" href="https://www.youtube.com/watch?v=7e90gBu4pas"><img src="img/about.jpg" alt=""></a>
+                </div>
+                
+                <!-- Mission Content -->
+                <div class="about-content col-lg-6 col-12 mb-30">
+                    <h2>About <span>J &amp; J Healthcare</span></h2>
+                    <p>Founded in 2021, J &amp; J Healthcare is a dynamic and innovative company based in Mauritius,
+                        dedicated to bringing premium beauty and wellness products to the island. As the sole
+                        supplier of two renowned international brands—Amaeyya from India and Prohall from
+                        Brazil—we are committed to providing our customers with exceptional quality products that
+                        prioritize health, beauty, and natural care.</p>
                     
-                    <!-- Footer Bottom Start -->
-                    <div class="footer-bottom section text-center">
-                        <p><a href="#">JJHEALTHCARE</a></p>
-                    </div><!-- Footer Bottom End -->
+                        <h2>Our <span>Mission</span></h2>
+                        <p>Our mission is to enhance the beauty and wellness experiences of Mauritians by offering
+                            carefully curated, high-quality products sourced from trusted global brands. We believe in the
+                            power of nature and innovation to promote healthier lifestyles and greater self-confidence.</p>
+                </div>
+                
+            </div>
+        </div>
+    </div><!-- About Section End-->
+    
+    <!-- Exclusive Brands Section Start-->
+    <div class="team-section section pb-120">
+        <div class="container">
+           
+            <div class="row">
+                <div class="section-title text-center col mb-60">
+                    <h2>Our Exclusive Brands</h2>
+                </div>
+            </div>
+           
+            <div class="row flex-row">
+                <div class="col-lg-10 col-12 mb-30">
+                    <h3>Amaeyya — Organic Beauty from India</h3>
+                    <p>Amaeyya embodies the rich heritage of Indian wellness, offering a range of organic cosmetic
+                        products crafted from natural, chemical-free ingredients. This brand promotes holistic care
+                        and nurtures your skin with the purity it deserves.</p>
+                </div>
+                <img class="col-lg-2 col-12 mb-30" style="width: 175px; height: 175px" src="img/amaeyya-logo.jpg"/>
+            </div>
+            
+            <div class="row flex-row-reverse">
+                <div class="col-lg-10 col-12 mb-30">
+                    <h3>Prohall — Brazilian Haircare Excellence</h3>
+                    <p>Prohall brings cutting-edge haircare solutions from Brazil, designed to meet diverse haircare
+                        needs. Enriched with natural ingredients, Prohall products offer salon-quality results, helping
+                        customers achieve strong, healthy, and beautiful hair.</p>
+                </div>
+                <img style="width: 175px; height: 175px" src="img/prohall-logo.jpg"/>
+            </div>
+        </div>
+    </div><!-- Exclusive Brands Section End-->
 
+    
+    <!-- Our Vision Section Start-->
+    <div class="team-section section pb-120">
+        <div class="container">
+           
+            <div class="row">
+                <div class="section-title text-center col">
+                    <h2>Our Vision for Growth</h2>
                 </div>
             </div>
             
+            <p>As we continue to build our presence in Mauritius, J &amp; J Healthcare is actively seeking to
+                expand our portfolio by partnering with more world-class beauty and wellness brands. Our
+                goal is to become the leading distributor of premium health and beauty products in the
+                region.</p>
+            
         </div>
-    </div><!-- Footer Section End-->
+    </div><!-- Our Vision Section End-->
+
+    
+    
+    <!-- Why choose us Section Start-->
+    <div class="team-section section pb-120">
+        <div class="container">
+           
+            <div class="row">
+                <div class="section-title col">
+                    <h2>Why Choose J &amp; J Healthcare?</h2>
+                </div>
+            </div>
+
+            <ul>
+                <li><strong>Exclusive Partnerships:</strong>  Sole distributor of Amaeyya and Prohall products in
+                    Mauritius.</li>
+                <li><strong>Commitment to Quality:</strong> We source only the best products from globally recognized
+brands.</li>
+                <li><strong>Customer-Centric Approach:</strong> Our customers’ satisfaction is at the heart of
+                    everything we do.</li>
+                <li><strong>Future-Focused:</strong> Dedicated to continuous growth and innovation in the beauty and
+                    wellness sector.</li>
+                <li><strong>Natural &amp; Organic Focus:</strong> We prioritize products that are gentle on your skin, hair,
+                    and the planet.</li>
+                <li><strong>Premium Quality:</strong> Sourced from trusted global brands committed to excellence.</li>
+                <li><strong>Convenient Online Shopping:</strong> Explore and purchase your favorite beauty essentials
+                    on our website and enjoy doorstep delivery.</li>
+                <li><strong>Customer Satisfaction:</strong> Your wellness and happiness are at the heart of what we do.</li>
+            </ul>
+            
+        </div>
+    </div><!-- Why choose us Section End-->
+
+       
+    <?php include('footer-section.php') ?>
     
 
 </div><!-- Main Wrapper End -->
