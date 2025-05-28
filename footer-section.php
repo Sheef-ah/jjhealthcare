@@ -13,7 +13,7 @@
                         <!-- Footer Widget -->
                         <div class="footer-widget col-lg-4 col-md-6 col-12 mb-40">
 
-                            <img class="footer-logo" src="img/logo-jj.png" alt="logo" style="width: 113px; height: 132px;">
+                            <img class="footer-logo" src="img/logo-jj-white.png" alt="logo" style="width: 113px; height: 132px;">
                             <p>we believe that true beauty begins with nature. That’s why we are proud to bring the finest organic and natural cosmetic products to the people of Mauritius. Our mission is simple — to connect you with premium beauty solutions that prioritize your health, the environment, and exceptional results.</p>
 
                         </div>

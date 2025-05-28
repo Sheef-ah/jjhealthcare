@@ -25,6 +25,16 @@
     <link rel="stylesheet" href="style.css">
     <!-- Modernizer JS -->
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+    (function(){
+        emailjs.init({
+            publicKey: "ZgZY6B7ho6xuDWM5e",
+        });
+    })();
+    </script>
 </head>
 
 <body>
@@ -70,37 +80,14 @@
                                             echo "<li><a href='login.php'>Login</a></li>";
                                         }
                                     ?>
-                                        <li><a href="#" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span class="num">2</span></a>
+                                        <li><a href="#" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span class="num"></span></a>
                                             
                                             <!-- Mini Cart -->
                                             <div class="mini-cart-brief dropdown-menu text-left">
                                                 <!-- Cart Products -->
-                                                <div class="all-cart-product clearfix">
-                                                    <div class="single-cart clearfix">
-                                                        <div class="cart-image">
-                                                            <a href="product-details.html"><img src="img/cart/1.jpg" alt=""></a>
-                                                        </div>
-                                                        <div class="cart-info">
-                                                            <h5><a href="product-details.html">Holiday Candle</a></h5>
-                                                            <p>1 x £9.00</p>
-                                                            <a href="#" class="cart-delete" title="Remove this item"><i class="fa fa-trash-o"></i></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="single-cart clearfix">
-                                                        <div class="cart-image">
-                                                            <a href="product-details.html"><img src="img/cart/2.jpg" alt=""></a>
-                                                        </div>
-                                                        <div class="cart-info">
-                                                            <h5><a href="product-details.html">Christmas Tree</a></h5>
-                                                            <p>1 x £9.00</p>
-                                                            <a href="#" class="cart-delete" title="Remove this item"><i class="fa fa-trash-o"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
+ 
                                                 <!-- Cart Total -->
-                                                <div class="cart-totals">
-                                                    <h5>Total <span>£12.00</span></h5>
-                                                </div>
+  
                                                 <!-- Cart Button -->
                                                 <div class="cart-bottom  clearfix">
                                                     <a href="checkout.html">Check out</a>
@@ -240,9 +227,20 @@
                 <p>Take your product offering to the next level by joining our network of trusted partners. Whether you’re a boutique salon, beauty clinic, or retailer, we welcome you to be part of the exclusive Amaeyya and Prohall distribution chain in Mauritius.</p>
                 <p>🌐 <a href="https://www.jjhealthcareltd.com" target="_blank">Visit our website</a> to apply as an authorised reseller.</p>
                 <p>💬 Let's shape beauty, confidence, and success — together.</p>
+                <div id="success"></div>
+                <div class="contact-form col-12">
+                <h4 class="title">Send Your Massage</h4>
+                    <form id="contactForm" action="" method="post">
+                        <input type="text" name="name" id="name" placeholder="Your Name">
+                        <input type="email" name="email" id="email" placeholder="Your Email">
+                        <textarea name="message" id="message" placeholder="Your Message"></textarea>
+                        <input style="background-color: #83a931; color: white;" type="submit" value="Submit" name="submit" id="submit">
+                    </form>
+                     <p class="form-messege"></p>
+            </div>
             </div>
         </div>
-    </div>  
+    </div> 
 
     
     <?php include('footer-section.php') ?>
@@ -265,6 +263,40 @@
 <script src="js/ajax-mail.js"></script>
 <!-- Main JS -->
 <script src="js/main.js"></script>
+<script>
+
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+    event.preventDefault();  // Prevents the form from submitting normally
+
+    var templateParams = {
+        subject: 'Authorize Reseller - ' + document.getElementById("name").value,
+        message: document.getElementById("message").value,
+        email: document.getElementById("email").value
+    };
+
+    emailjs.send("service_dxhosq8", "template_ffa1dcv", templateParams)
+    .then(
+        function(response) {
+            document.getElementById("success").innerHTML = 
+                "<div id='login-error' class='alert alert-success'>Query Sent! We will get back to you as soon as we can. Thank You!</div>";
+                document.getElementById("contactForm").reset();
+                setTimeout(() => {
+                const alertBox = document.getElementById("login-error");
+                if (alertBox) alertBox.style.display = "none";
+            }, 5000);
+        },
+        function(error) {
+            document.getElementById("success").innerHTML = 
+                "<div id='login-error' class='alert alert-danger'>An error has occurred. Please try again.</div>";
+                document.getElementById("contactForm").reset();
+                setTimeout(() => {
+                const alertBox = document.getElementById("login-error");
+                if (alertBox) alertBox.style.display = "none";
+            }, 5000);
+        }
+    );
+});
+</script>
 </body>
 
 

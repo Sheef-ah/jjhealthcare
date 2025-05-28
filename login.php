@@ -148,37 +148,14 @@ if (isset($_POST['register'])) {
                                            echo "<li><a href='login.php'>Login</a></li>"; 
                                         }
                                     ?>
-                                        <li><a href="#" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span class="num">2</span></a>
+                                        <li><a href="#" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span class="num"></span></a>
                                             
                                             <!-- Mini Cart -->
                                             <div class="mini-cart-brief dropdown-menu text-left">
                                                 <!-- Cart Products -->
-                                                <div class="all-cart-product clearfix">
-                                                    <div class="single-cart clearfix">
-                                                        <div class="cart-image">
-                                                            <a href="product-details.html"><img src="img/cart/1.jpg" alt=""></a>
-                                                        </div>
-                                                        <div class="cart-info">
-                                                            <h5><a href="product-details.html">Holiday Candle</a></h5>
-                                                            <p>1 x £9.00</p>
-                                                            <a href="#" class="cart-delete" title="Remove this item"><i class="fa fa-trash-o"></i></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="single-cart clearfix">
-                                                        <div class="cart-image">
-                                                            <a href="product-details.html"><img src="img/cart/2.jpg" alt=""></a>
-                                                        </div>
-                                                        <div class="cart-info">
-                                                            <h5><a href="product-details.html">Christmas Tree</a></h5>
-                                                            <p>1 x £9.00</p>
-                                                            <a href="#" class="cart-delete" title="Remove this item"><i class="fa fa-trash-o"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
+ 
                                                 <!-- Cart Total -->
-                                                <div class="cart-totals">
-                                                    <h5>Total <span>£12.00</span></h5>
-                                                </div>
+  
                                                 <!-- Cart Button -->
                                                 <div class="cart-bottom  clearfix">
                                                     <a href="checkout.html">Check out</a>
