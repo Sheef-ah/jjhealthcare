@@ -11,7 +11,7 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
     <!-- CSS
 	============================================ -->
     <!-- Bootstrap CSS -->
@@ -80,21 +80,8 @@
                                             echo "<li><a href='login.php'>Login</a></li>";
                                         }
                                     ?>
-                                        <li><a href="#" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span class="num"></span></a>
-                                            
-                                            <!-- Mini Cart -->
-                                            <div class="mini-cart-brief dropdown-menu text-left">
-                                                <!-- Cart Products -->
- 
-                                                <!-- Cart Total -->
-  
-                                                <!-- Cart Button -->
-                                                <div class="cart-bottom  clearfix">
-                                                    <a href="checkout.html">Check out</a>
-                                                </div>
-                                            </div>
-                                            
-                                        </li>
+                                        <!-- Mini Cart -->
+                                        <?php include("mini-cart-preview.php") ?>
                                     </ul>
                                 </div>
 
@@ -240,10 +227,12 @@
             </div>
             </div>
         </div>
-    </div> 
+    </div>
 
     
+    <!-- Footer Section Start-->
     <?php include('footer-section.php') ?>
+    <!-- Footer Section End-->
     
 
 </div><!-- Main Wrapper End -->

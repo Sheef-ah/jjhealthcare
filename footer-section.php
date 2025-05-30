@@ -41,7 +41,7 @@
                             <h4 class="widget-title">Our Brands</h4>
 
                             <ul>
-                                <li><a href="#">Prohall</a></li>
+                                <li><a href="prohall.php?category1=8&category2=9">Prohall</a></li>
                                 <li><a href="#">Amaeyya</a></li>
                             </ul>
 

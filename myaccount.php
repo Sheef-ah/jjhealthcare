@@ -161,21 +161,8 @@ if (isset($_POST['savepassword'])) {
                                            echo "<li><a href='login.php'>Login</a></li>"; 
                                         }
                                     ?>
-                                        <li><a href="#" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span class="num"></span></a>
-                                            
-                                            <!-- Mini Cart -->
-                                            <div class="mini-cart-brief dropdown-menu text-left">
-                                                <!-- Cart Products -->
- 
-                                                <!-- Cart Total -->
-  
-                                                <!-- Cart Button -->
-                                                <div class="cart-bottom  clearfix">
-                                                    <a href="checkout.html">Check out</a>
-                                                </div>
-                                            </div>
-                                            
-                                        </li>
+                                        <!-- Mini Cart -->
+                                        <?php include("mini-cart-preview.php") ?>
                                     </ul>
                                 </div>
 

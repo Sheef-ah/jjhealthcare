@@ -244,5 +244,43 @@ videoPopup.magnificPopup({
 });
 
 
+/*----- 
+	Add to Cart / Remove from Cart
+--------------------------------*/
+$(document).on("click", '.add-to-cart', function(e){
+    e.preventDefault();
+    var productId = $(this).data('productid');
+    console.log("ADD TO CART!!!")
+    $.post('add-to-cart.php', { productid: productId }, function(response){
+        if(response.success){
+            $.get('mini-cart-preview.php', function(cartHtml){
+                $('#mini-cart').html(cartHtml);
+            });
+            // Update counter
+            $("#card-count").html(response.cartCount);
+        } else {
+            alert('Failed to add product.');
+        }
+    }, 'json');
+});
+
+
+$(document).on('click', '.remove-from-cart', function (e) {
+    e.preventDefault();
+    var productId = $(this).data('productid');
+    console.log("REMOVE FROM CART!!!")
+    $.post('remove-from-cart.php', { productid: productId }, function(response){
+        if (response.success) {                    
+            // Reload the mini cart preview
+            $.get('mini-cart-preview.php?t=' + new Date().getTime(), function(cartHtml){
+                $('#mini-cart').html(cartHtml);
+            });
+            // Update counter
+            $("#card-count").html(response.cartCount);
+        } else {
+            alert('Failed to remove item: ' + response.message);
+        }
+    }, 'json');
+});
 
 })(jQuery);	

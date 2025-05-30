@@ -102,21 +102,8 @@ if (!empty($_GET['category1']) && !empty($_GET['category2'])) {
                                            echo "<li><a href='login.php'>Login</a></li>"; 
                                         }
                                         ?>
-                                        <li><a href="#" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span class="num"></span></a>
-                                            
-                                            <!-- Mini Cart -->
-                                            <div class="mini-cart-brief dropdown-menu text-left">
-                                                <!-- Cart Products -->
- 
-                                                <!-- Cart Total -->
-  
-                                                <!-- Cart Button -->
-                                                <div class="cart-bottom  clearfix">
-                                                    <a href="checkout.html">Check out</a>
-                                                </div>
-                                            </div>
-                                            
-                                        </li>
+                                        <!-- Mini Cart -->
+                                        <?php include("mini-cart-preview.php") ?>
                                     </ul>
                                 </div>
 
@@ -230,7 +217,8 @@ if (!empty($_GET['category1']) && !empty($_GET['category2'])) {
                         echo '</div>';
                         echo '</div>';
                         echo '<div class="action-button fix">';
-                        echo '<a href="#">add to cart</a>';
+                        //echo '<a href="#">add to cart</a>';
+                        echo '<a href="#" class="add-to-cart" data-productid="'.$row['ProductID'].'">add to cart</a>';
                         echo '</div>';
                         echo '</div>';
                         echo '</div>';
@@ -249,7 +237,9 @@ if (!empty($_GET['category1']) && !empty($_GET['category2'])) {
     </div><!-- Product Section End-->
     
        
+    <!-- Footer Section Start-->
     <?php include('footer-section.php') ?>
+    <!-- Footer Section End-->
 
 
 </div><!-- Main Wrapper End -->
