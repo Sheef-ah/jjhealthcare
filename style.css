@@ -2899,8 +2899,6 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     width: 100%; }
 
 /*-- About Content --*/
-.about-content {
-  margin-top: 40px; }
   @media only screen and (min-width: 992px) and (max-width: 1200px) {
     .about-content {
       margin-top: 0; } }

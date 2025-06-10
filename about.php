@@ -162,7 +162,9 @@
                 
                 <!-- About Image -->
                 <div class="about-image col-lg-6 col-12 mb-30">
-                    <a class="video-popup" href="https://www.youtube.com/watch?v=7e90gBu4pas"><img src="img/about.jpg" alt=""></a>
+                    <video width="100%" autoplay muted loop>
+                        <source src="img/Bite My Lips_2.mp4" type="video/mp4">
+                    </video>
                 </div>
                 
                 <!-- Mission Content -->
