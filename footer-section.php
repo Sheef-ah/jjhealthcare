@@ -42,7 +42,7 @@
 
                             <ul>
                                 <li><a href="prohall.php?category1=8&category2=9">Prohall</a></li>
-                                <li><a href="#">Amaeyya</a></li>
+                                <li><a href="amaeyya.php?category1=1">Amaeyya</a></li>
                             </ul>
 
                         </div>

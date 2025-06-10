@@ -155,7 +155,7 @@ if (isset($_POST['submit'])) {
                                 <li><a href="#">Our Brands</a>
                                     <ul class="sub-menu">
                                         <li><a href="prohall.php?category1=8&category2=9">Prohall</a></li>
-                                        <li><a href="#">Amaeyya (coming soon)</a></li>
+                                        <li><a href="amaeyya.php?category1=1">Amaeyya</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="about.php">About</a></li>

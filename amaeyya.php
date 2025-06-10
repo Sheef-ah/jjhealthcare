@@ -2,32 +2,47 @@
 include('session.php');
 include('dbconnection.php'); // including database connection
 
-if (!empty($_GET['productid'])) {
+if (!empty($_GET['category1']) && !empty($_GET['category2'])) {
 
-    $productid = $_GET['productid'];
+    $category1 = $_GET['category1'];
+    $category2 = $_GET['category2'];
 
-    $stmt = $conn->prepare("SELECT * FROM products WHERE ProductID = ?");
-    $stmt->bind_param("i", $productid);
+    $stmt = $conn->prepare("SELECT * FROM products WHERE CategoryID = ? OR CategoryID = ?");
+    $stmt->bind_param("ii", $category1, $category2);
     $stmt->execute();
     $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
 
+} elseif (!empty($_GET['category1'])) {
+
+    $category1 = $_GET['category1'];
+
+    $stmt = $conn->prepare("SELECT * FROM products WHERE CategoryID = ?");
+    $stmt->bind_param("i", $category1);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+} elseif (!empty($_GET['category2'])) {
+
+    $category2 = $_GET['category2'];
+
+    $stmt = $conn->prepare("SELECT * FROM products WHERE CategoryID = ?");
+    $stmt->bind_param("i", $category2);
+    $stmt->execute();
+    $result = $stmt->get_result();
 }
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
-
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>JJHEALTHCARE - Product Details</title>
+    <title>JJHEALTHCARE - Amaeyya</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
     <!-- CSS
 	============================================ -->
     <!-- Bootstrap CSS -->
@@ -73,28 +88,22 @@ if (!empty($_GET['productid'])) {
 
                                 <!-- Header Logo -->
                                 <div class="header-logo col-md-4 col-12">
-                                    <a href="index.php" class="logo"><img src="img/LOGO1.png" alt="logo"></a>
+                                    <a href="index.php" class="logo"><img src="img/logo-jj.png" alt="logo" style="width: 113px; height: 132px;"></a>
                                 </div>
 
                                 <!-- Account Menu -->
                                 <div class="account-menu col-md-4 col-12">
                                     <ul>
-                                        <li><a href="#">My Account</a></li>
-                                        <li><a href="#" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span class="num"></span></a>
-                                            
-                                            <!-- Mini Cart -->
-                                            <div class="mini-cart-brief dropdown-menu text-left">
-                                                <!-- Cart Products -->
- 
-                                                <!-- Cart Total -->
-  
-                                                <!-- Cart Button -->
-                                                <div class="cart-bottom  clearfix">
-                                                    <a href="checkout.html">Check out</a>
-                                                </div>
-                                            </div>
-                                            
-                                        </li>
+                                        <?php
+                                        if(!empty($login_session)){
+                                            echo "<li><a href='myaccount.php'>My Account</a></li>";
+                                        }
+                                        else{
+                                           echo "<li><a href='login.php'>Login</a></li>"; 
+                                        }
+                                        ?>
+                                        <!-- Mini Cart -->
+                                        <?php include("mini-cart-preview.php") ?>
                                     </ul>
                                 </div>
 
@@ -116,22 +125,23 @@ if (!empty($_GET['productid'])) {
 
                         <!-- Header Bottom Logo -->
                         <div class="header-bottom-logo">
-                            <a href="index.php" class="logo"><img src="img/LOGO1.png" alt="logo"></a>
+                            <a href="index.php" class="logo"><img src="img/logo-jj.png" alt="logo"></a>
                         </div>
 
                         <!-- Main Menu -->
                         <nav id="main-menu" class="main-menu">
                             <ul>
-                                <li><a href="index.php">home</a></li>
-                                <li><a href="#">Our Brands</a>
+                                <li><a href="amaeyya.php?category1=1">Skincare</a></li>
+                                <li><a href="#">Makeup</a>
                                     <ul class="sub-menu">
-                                        <li><a href="prohall.php?category1=8&category2=9">Prohall</a></li>
-                                        <li><a href="amaeyya.php?category1=1">Amaeyya</a></li>
+                                        <li><a href="amaeyya.php?category1=2">Face</a></li>
+                                        <li><a href="amaeyya.php?category1=3">Lips</a></li>
+                                        <li><a href="amaeyya.php?category1=4">Eyes</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="about.php">About</a></li>
-                                <!-- <li><a href="blog.html">Blogs</a></li> -->
-                                <li><a href="contact.php">contact</a></li>
+                                <li><a href="amaeyya.php?category1=5">Hair Care</a></li>
+                                <li><a href="amaeyya.php?category1=6">Body Care</a></li>
+                                <li><a href="amaeyya.php?category1=7">Nails</a></li>
                             </ul>
                         </nav>
 
@@ -163,89 +173,80 @@ if (!empty($_GET['productid'])) {
     </div><!-- Header Section End -->
     
        
-    <!-- Page Banner Section Start-->
-    <div class="page-banner-section section" style="background-image: url(img/bg/page-banner.jpg)">
-        <div class="container">
-            <div class="row">
-                
-                <!-- Page Title Start -->
-                <div class="page-title text-center col">
-                    <h1>Product details</h1>
-                </div><!-- Page Title End -->
-                
-            </div>
-        </div>
-    </div><!-- Page Banner Section End-->
+    <!-- Hero Slider Start-->
+    <div class="hero-slider section fix">
+
+        <!-- Hero Slide Item Start-->
+        <div class="hero-item" style="background-image: url(img/ameyya-banner.jpg)">
+
+
+        </div><!-- Hero Slide Item End-->
+
+    </div><!-- Hero Slider End-->
+
+    <!-- Home About Section Start-->
+
+
+    <!-- Home About Section End-->
     
        
     <!-- Product Section Start-->
-    <div class="product-section section pt-110 pb-90">
+    <div class="product-section section pt-70 pb-60">
         <div class="container">
+           
+            <!-- Section Title Start-->
+            <div class="row">
+                <div class="section-title text-center col mb-60">
+                    <h1>Products List</h1>
+                </div>
+            </div><!-- Section Title End-->
             
             <!-- Product Wrapper Start-->
             <div class="row">
-                
-                <!-- Product Image & Thumbnail Start -->
-                <div class="col-lg-7 col-12 mb-30">
-                   
-                    <!-- Product Thumbnail -->
-<!--                     <div class="single-product-thumbnail product-thumbnail-slider float-left">
-                        <div class="single-thumb"><img src="img/product-details/thumb-1.jpg" alt=""></div>
-                        <div class="single-thumb"><img src="img/product-details/thumb-2.jpg" alt=""></div>
-                        <div class="single-thumb"><img src="img/product-details/thumb-3.jpg" alt=""></div>
-                        <div class="single-thumb"><img src="img/product-details/thumb-4.jpg" alt=""></div>
-                    </div> -->
-                    
-                    <!-- Product Image -->
-                    <div class="single-product-image product-image-slider fix">
-                        <div class="single-image"><img src="<?php echo $row['Image']?>" alt=""></div>
-                    </div>
-                    
-                </div><!-- Product Image & Thumbnail End -->
-                
-                <!-- Product Content Start -->
-                <div class="single-product-content col-lg-5 col-12 mb-30">
-                   
-                    <!-- Title -->
-                    <h1 class="title"><?php echo $row['ProductName']?></h1>
-                    
-                    <!-- Product Rating -->
-                    <span class="product-rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </span>
-                    
-                    <!-- Price -->
-                    <span class="product-price">Rs <?php echo $row['Price']?>.00</span>
-                    
-                    <!-- Description -->
-                    <div class="description">
-                        <p><?php echo $row['Description']?></p>
-                    </div>
-                    
-                    <!-- Quantity & Cart Button -->
-                    <div class="product-quantity-cart fix">
-                        <div class="product-quantity">
-                            <input type="text" value="0" name="qtybox">
-                        </div>
-                        <button class="add-to-cart">add to cart</button>
-                    </div>
-                    
-                </div><!-- Product Content End -->
+
+            <?php
+                if ($result && $result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        echo '<div class="col-lg-4 col-md-6 col-12 mb-60">';
+                        echo '<div class="product">';
+                        echo '<div class="image">';
+                        echo '<a href="product-details.php?productid='.$row['ProductID'].'" class="img"><img src="'.$row['Image'].'" alt="Product"></a>';
+                        echo '</div>';
+                        echo '<div class="content">';
+                        echo '<div class="head fix">';
+                        echo '<div class="title-category float-left">';
+                        echo '<h5 class="title"><a href="product-details.php?productid='.$row['ProductID'].'">'.$row['ProductName'].'</a></h5>';
+                        echo '<a href="" class="category">Amaeyya</a>';
+                        echo '</div>';
+                        echo '<div class="price float-right">';
+                        echo '<span class="new">Rs '.$row['Price'].'.00</span>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '<div class="action-button fix">';
+                        //echo '<a href="#">add to cart</a>';
+                        echo '<a href="#" class="add-to-cart" data-productid="'.$row['ProductID'].'">add to cart</a>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                    }
+                }
+
+                else{
+                    echo '<p class="section-title text-center col mb-60">No product available.</p>';
+                }
+            ?>
                 
             </div><!-- Product Wrapper End-->
             
         </div>
     </div><!-- Product Section End-->
-
+    
        
     <!-- Footer Section Start-->
     <?php include('footer-section.php') ?>
     <!-- Footer Section End-->
-    
+
 
 </div><!-- Main Wrapper End -->
 
@@ -265,6 +266,5 @@ if (!empty($_GET['productid'])) {
 <!-- Main JS -->
 <script src="js/main.js"></script>
 </body>
-
 
 </html>
