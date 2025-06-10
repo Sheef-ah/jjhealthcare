@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 ?>
 
-<li><a href="#" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span id="card-count" class="num"><?php echo array_sum(array_column($_SESSION['cart'], 'Quantity')) ?></span></a>
+<li><a href="#" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span id="card-count" class="num"><?php echo isset($_SESSION['cart']) && is_array($_SESSION['cart']) ? array_sum(array_column($_SESSION['cart'], 'Quantity')) : 0; ?></span></a>
                                             
     <!-- Mini Cart -->
     <div class="mini-cart-brief dropdown-menu text-left">
