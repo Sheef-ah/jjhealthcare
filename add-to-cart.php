@@ -6,15 +6,14 @@ include('dbconnection.php');
 //     $product_id = $_GET['productid'];
 if (isset($_POST['productid'])) {
     $product_id = intval($_POST['productid']);
+    $quantity = isset($_POST['quantity']) ? max(1, intval($_POST['quantity'])) : 1; // Default to 1 if invalid or missing
 
-    // Initialize cart array if it doesn't exist
     if (!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = [];
     }
 
-    // If product already in cart, increment quantity, else add it
     if (isset($_SESSION['cart'][$product_id])) {
-        $_SESSION['cart'][$product_id]['Quantity'] += 1;
+        $_SESSION['cart'][$product_id]['Quantity'] += $quantity;
     } else {
         $query = "SELECT ProductID, ProductName, Price, Image FROM products WHERE ProductID = ?";
         $stmt = $conn->prepare($query);
@@ -23,24 +22,21 @@ if (isset($_POST['productid'])) {
         $result = $stmt->get_result();
 
         if ($result && $result->num_rows > 0) {
-          $product = $result->fetch_assoc();
+            $product = $result->fetch_assoc();
 
-          // Store all required details in the session
-          $_SESSION['cart'][$product_id] = [
-              'ProductID' => $product['ProductID'],
-              'ProductName' => $product['ProductName'],
-              'Price' => $product['Price'],
-              'Image' => $product['Image'],
-              'Quantity' => 1
-          ];
+            $_SESSION['cart'][$product_id] = [
+                'ProductID' => $product['ProductID'],
+                'ProductName' => $product['ProductName'],
+                'Price' => $product['Price'],
+                'Image' => $product['Image'],
+                'Quantity' => $quantity
+            ];
         } else {
             echo json_encode(['success' => false, 'message' => 'Product not found']);
             exit;
         }
     }
 
-    // Redirect back to the product list or cart page
-    //header("Location: index.php");
     echo json_encode(['success' => true, 'cartCount' => array_sum(array_column($_SESSION['cart'], 'Quantity'))]);
     exit;
 } else {

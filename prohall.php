@@ -102,8 +102,21 @@ if (!empty($_GET['category1']) && !empty($_GET['category2'])) {
                                            echo "<li><a href='login.php'>Login</a></li>"; 
                                         }
                                         ?>
-                                        <!-- Mini Cart -->
-                                        <?php include("mini-cart-preview.php") ?>
+                                        <li><a href="#" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span id="card-count" class="num"><?php echo isset($_SESSION['cart']) && is_array($_SESSION['cart']) ? array_sum(array_column($_SESSION['cart'], 'Quantity')) : 0; ?></span></a>
+                                            
+                                            <!-- Mini Cart -->
+                                            <div class="mini-cart-brief dropdown-menu text-left">
+                                                <div id="mini-cart">
+                                                <?php include("mini-cart-preview.php") ?>
+                                                </div>
+                                                                                             
+                                                <!-- Cart Button -->
+                                                <div class="cart-bottom  clearfix">
+                                                    <a href="checkout.php">Check out</a>
+                                                </div>
+                                            </div>
+                                            
+                                        </li>
                                     </ul>
                                 </div>
 

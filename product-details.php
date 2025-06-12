@@ -79,18 +79,24 @@ if (!empty($_GET['productid'])) {
                                 <!-- Account Menu -->
                                 <div class="account-menu col-md-4 col-12">
                                     <ul>
-                                        <li><a href="#">My Account</a></li>
-                                        <li><a href="#" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span class="num"></span></a>
+                                    <?php
+                                        if (!empty($login_session)) {
+                                            echo "<li><a href='myaccount.php'>My Account</a></li>";
+                                        }else {
+                                            echo "<li><a href='login.php'>Login</a></li>";
+                                        }
+                                    ?>
+                                        <li><a href="#" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span id="card-count" class="num"><?php echo isset($_SESSION['cart']) && is_array($_SESSION['cart']) ? array_sum(array_column($_SESSION['cart'], 'Quantity')) : 0; ?></span></a>
                                             
                                             <!-- Mini Cart -->
                                             <div class="mini-cart-brief dropdown-menu text-left">
-                                                <!-- Cart Products -->
- 
-                                                <!-- Cart Total -->
-  
+                                                <div id="mini-cart">
+                                                <?php include("mini-cart-preview.php") ?>
+                                                </div>
+                                                                                             
                                                 <!-- Cart Button -->
                                                 <div class="cart-bottom  clearfix">
-                                                    <a href="checkout.html">Check out</a>
+                                                    <a href="checkout.php">Check out</a>
                                                 </div>
                                             </div>
                                             
@@ -229,9 +235,9 @@ if (!empty($_GET['productid'])) {
                     <!-- Quantity & Cart Button -->
                     <div class="product-quantity-cart fix">
                         <div class="product-quantity">
-                            <input type="text" value="0" name="qtybox">
+                            <input type="number" min="1" value="1" name="qtybox">
                         </div>
-                        <button class="add-to-cart">add to cart</button>
+                        <button class="add-to-cart" data-productid="<?php echo $row['ProductID']?>">add to cart</button>
                     </div>
                     
                 </div><!-- Product Content End -->

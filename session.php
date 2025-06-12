@@ -16,6 +16,10 @@ if (!empty($_SESSION['login_user'])) {
         $login_session = $row['FirstName'];
     }
 
+    $fullname = $row['FirstName'] . ' ' .$row['LastName'];
+    $useremail = $row['Email'];
+    $userid = $row['UserID'];
+
     $stmt = $conn->prepare("SELECT * FROM Addresses WHERE UserID = ? LIMIT 1");
     $stmt->bind_param("i", $row['UserID']);
     $stmt->execute();
@@ -23,10 +27,10 @@ if (!empty($_SESSION['login_user'])) {
 
     if ($address = $addr_result->fetch_assoc()) {
 
-        $add = $address['Street'] . ', ' . $address['City'] . ', ' . $address['Country'];
+        $add = $address['Street'] . ', ' . $address['City'] . ', ' . $address['ZipCode'] . ', ' . $address['Country'];
+        $userphone = $address['PhoneNumber'];
         $_SESSION['default_address'] = [
             'street'     => $address['Street'],
-            'apartment'  => $address['State'],
             'city'       => $address['City'],
             'zipcode'    => $address['ZipCode'],
             'country'    => $address['Country'],

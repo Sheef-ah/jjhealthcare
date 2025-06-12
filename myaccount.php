@@ -89,6 +89,25 @@ if (isset($_POST['savepassword'])) {
     $stmt->close();
     $conn->close();
 }
+
+$query = "
+    SELECT 
+        o.OrderID,
+        o.OrderDate,
+        p.ProductName AS Product,
+        oi.Quantity,
+        (oi.Quantity * oi.UnitPrice) AS Total
+    FROM `Orders` o
+    JOIN OrderItems oi ON o.OrderID = oi.OrderID
+    JOIN Products p ON oi.ProductID = p.ProductID
+    WHERE o.UserID = ?
+    ORDER BY o.OrderDate DESC
+";
+
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $userid);
+$stmt->execute();
+$orderresult = $stmt->get_result();
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -161,8 +180,21 @@ if (isset($_POST['savepassword'])) {
                                            echo "<li><a href='login.php'>Login</a></li>"; 
                                         }
                                     ?>
-                                        <!-- Mini Cart -->
-                                        <?php include("mini-cart-preview.php") ?>
+                                        <li><a href="#" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span id="card-count" class="num"><?php echo isset($_SESSION['cart']) && is_array($_SESSION['cart']) ? array_sum(array_column($_SESSION['cart'], 'Quantity')) : 0; ?></span></a>
+                                            
+                                            <!-- Mini Cart -->
+                                            <div class="mini-cart-brief dropdown-menu text-left">
+                                                <div id="mini-cart">
+                                                <?php include("mini-cart-preview.php") ?>
+                                                </div>
+                                                                                             
+                                                <!-- Cart Button -->
+                                                <div class="cart-bottom  clearfix">
+                                                    <a href="checkout.php">Check out</a>
+                                                </div>
+                                            </div>
+                                            
+                                        </li>
                                     </ul>
                                 </div>
 
@@ -310,7 +342,7 @@ if (isset($_POST['savepassword'])) {
 
                         <div class="panel single-accordion">
                             <a class="accordion-head" data-toggle="collapse" data-parent="#checkout-accordion" href="#password">Change password</a>
-                            <div id="password" class="collapse show">
+                            <div id="password" class="collapse">
                                 <div class="accordion-body billing-method fix">
                                    
                                     <form action="#" class="billing-form checkout-form" method="post">
@@ -346,50 +378,36 @@ if (isset($_POST['savepassword'])) {
                         <div class="order-details">
                             <form action="#">
                             <table class="table">
-                            
-                            <!-- Table Head -->
-                            <thead>
-                                <tr>
-                                    <th class="name">Order ID</th>
-                                    <th class="name">Date</th>
-                                    <th class="name">Product</th>
-                                    <th class="name">Quantity</th>
-                                    <th class="total">Total</th>
-                                </tr>
-                            </thead>
-                            
-                            <!-- Table Body -->
-<!--                             <tbody>
-                                <tr>
-                                    <td><span class="cart-number">1</span></td>
-                                    <td><span class="cart-number">30/04/2025</span></td>
-                                    <td><a href="#" class="cart-pro-title">Holiday Candle</a></td>
-                                    <td><div class="">2</div></td>
-                                    <td><p class="cart-price-total">$104.99</p></td>
-                                </tr>
-                                <tr>
-                                    <td><span class="cart-number">2</span></td>
-                                    <td><span class="cart-number">30/04/2025</span></td>
-                                    <td><a href="#" class="cart-pro-title">Christmas Tree</a></td>
-                                    <td><div class="">3</div></td>
-                                    <td><p class="cart-price-total">$85.99</p></td>
-                                </tr>
-                                <tr>
-                                    <td><span class="cart-number">1</span></td>
-                                    <td><span class="cart-number">30/04/2025</span></td>
-                                    <td><a href="#" class="cart-pro-title">Holiday Candle</a></td>
-                                    <td><div class="">2</div></td>
-                                    <td><p class="cart-price-total">$104.99</p></td>
-                                </tr>
-                                <tr>
-                                    <td><span class="cart-number">2</span></td>
-                                    <td><span class="cart-number">30/04/2025</span></td>
-                                    <td><a href="#" class="cart-pro-title">Christmas Tree</a></td>
-                                    <td><div class="">3</div></td>
-                                    <td><p class="cart-price-total">$85.99</p></td>
-                                </tr>
-                            </tbody> -->
-                        </table>
+                                <!-- Table Head -->
+                                <thead>
+                                    <tr>
+                                        <th class="name">Order ID</th>
+                                        <th class="name">Date</th>
+                                        <th class="name">Product</th>
+                                        <th class="name">Quantity</th>
+                                        <th class="total">Total</th>
+                                    </tr>
+                                </thead>
+
+                                <!-- Table Body -->
+                                <tbody>
+                                    <?php
+                                    if ($orderresult->num_rows > 0) {
+                                        while ($row = $orderresult->fetch_assoc()) {
+                                            echo "<tr>";
+                                            echo "<td><span class='cart-number'>{$row['OrderID']}</span></td>";
+                                            echo "<td><span class='cart-number'>{$row['OrderDate']}</span></td>";
+                                            echo "<td><a href='#' class='cart-pro-title'>{$row['Product']}</a></td>";
+                                            echo "<td><div>{$row['Quantity']}</div></td>";
+                                            echo "<td><p class='cart-price-total'>Rs" . number_format($row['Total'], 2) . "</p></td>";
+                                            echo "</tr>";
+                                        }
+                                    } else {
+                                        echo "<tr><td colspan='5'>No orders found.</td></tr>";
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
                             </form>
                         </div>
                     </div>

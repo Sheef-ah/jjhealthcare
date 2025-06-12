@@ -4,12 +4,6 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 ?>
 
-<li><a href="#" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span id="card-count" class="num"><?php echo isset($_SESSION['cart']) && is_array($_SESSION['cart']) ? array_sum(array_column($_SESSION['cart'], 'Quantity')) : 0; ?></span></a>
-                                            
-    <!-- Mini Cart -->
-    <div class="mini-cart-brief dropdown-menu text-left">
-        <div id="mini-cart">
-            <!-- Cart Product -->
             <div class="all-cart-product clearfix">
             <?php 
                 if (!empty($_SESSION['cart'])) {
@@ -40,12 +34,3 @@ if (session_status() === PHP_SESSION_NONE) {
                     <h5>Total <span>Rs <?php echo number_format($total, 2); ?></span></h5>
                 </div>
             <?php } ?>
-        </div>
-                                                     
-        <!-- Cart Button -->
-        <div class="cart-bottom  clearfix">
-            <a href="checkout.html">Check out</a>
-        </div>
-    </div>
-    
-</li>

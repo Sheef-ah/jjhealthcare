@@ -116,7 +116,7 @@ paymentMethodList.on('click', function(){
 -----------------------------------*/
 $('.hero-slider').slick({
     arrows: false,
-    autoplay: false,
+    autoplay: true,
     dots: true,
     fade: true,
     infinite: true,
@@ -249,14 +249,14 @@ videoPopup.magnificPopup({
 --------------------------------*/
 $(document).on("click", '.add-to-cart', function(e){
     e.preventDefault();
+    
     var productId = $(this).data('productid');
-    console.log("ADD TO CART!!!")
-    $.post('add-to-cart.php', { productid: productId }, function(response){
+    var quantity = $(this).closest('.product-quantity-cart').find('input[name="qtybox"]').val();
+    $.post('add-to-cart.php', { productid: productId, quantity: quantity }, function(response){
         if(response.success){
             $.get('mini-cart-preview.php', function(cartHtml){
                 $('#mini-cart').html(cartHtml);
             });
-            // Update counter
             $("#card-count").html(response.cartCount);
         } else {
             alert('Failed to add product.');
@@ -268,7 +268,6 @@ $(document).on("click", '.add-to-cart', function(e){
 $(document).on('click', '.remove-from-cart', function (e) {
     e.preventDefault();
     var productId = $(this).data('productid');
-    console.log("REMOVE FROM CART!!!")
     $.post('remove-from-cart.php', { productid: productId }, function(response){
         if (response.success) {                    
             // Reload the mini cart preview

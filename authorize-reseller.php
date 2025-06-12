@@ -1,3 +1,6 @@
+<?php
+include('session.php');
+?>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -80,8 +83,21 @@
                                             echo "<li><a href='login.php'>Login</a></li>";
                                         }
                                     ?>
-                                        <!-- Mini Cart -->
-                                        <?php include("mini-cart-preview.php") ?>
+                                        <li><a href="#" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span id="card-count" class="num"><?php echo isset($_SESSION['cart']) && is_array($_SESSION['cart']) ? array_sum(array_column($_SESSION['cart'], 'Quantity')) : 0; ?></span></a>
+                                            
+                                            <!-- Mini Cart -->
+                                            <div class="mini-cart-brief dropdown-menu text-left">
+                                                <div id="mini-cart">
+                                                <?php include("mini-cart-preview.php") ?>
+                                                </div>
+                                                                                             
+                                                <!-- Cart Button -->
+                                                <div class="cart-bottom  clearfix">
+                                                    <a href="checkout.php">Check out</a>
+                                                </div>
+                                            </div>
+                                            
+                                        </li>
                                     </ul>
                                 </div>
 
@@ -216,7 +232,7 @@
                 <p>💬 Let's shape beauty, confidence, and success — together.</p>
                 <div id="success"></div>
                 <div class="contact-form col-12">
-                <h4 class="title">Send Your Massage</h4>
+                <h4 class="title">Send Your Message</h4>
                     <form id="contactForm" action="" method="post">
                         <input type="text" name="name" id="name" placeholder="Your Name">
                         <input type="email" name="email" id="email" placeholder="Your Email">
@@ -259,8 +275,8 @@ document.getElementById("contactForm").addEventListener("submit", function(event
 
     var templateParams = {
         subject: 'Authorize Reseller - ' + document.getElementById("name").value,
-        message: document.getElementById("message").value,
-        email: document.getElementById("email").value
+        message: document.getElementById("message").value + '\n\nFrom: ' + document.getElementById("email").value,
+        email: 'info@jjhealthcareltd.com'
     };
 
     emailjs.send("service_dxhosq8", "template_ffa1dcv", templateParams)
