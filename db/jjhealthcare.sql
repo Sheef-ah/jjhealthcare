@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2025 at 12:00 PM
+-- Generation Time: Jun 12, 2025 at 09:34 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -38,13 +38,6 @@ CREATE TABLE `addresses` (
   `PhoneNumber` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `addresses`
---
-
-INSERT INTO `addresses` (`AddressID`, `UserID`, `Street`, `City`, `Apartment`, `ZipCode`, `Country`, `PhoneNumber`) VALUES
-(2, 1, 'plateau road', 'goodlands', '', '30416', 'mauritius', '58308521');
-
 -- --------------------------------------------------------
 
 --
@@ -77,6 +70,40 @@ INSERT INTO `categories` (`CategoryID`, `Brand`, `CategoryName`) VALUES
 (13, 'Prohall', 'Hair Treatments '),
 (14, 'Prohall', 'Hair Color '),
 (15, 'Prohall', 'Bleaching');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orderitems`
+--
+
+CREATE TABLE `orderitems` (
+  `OrderItemID` int(11) NOT NULL,
+  `OrderID` int(11) NOT NULL,
+  `ProductID` int(11) NOT NULL,
+  `Quantity` int(11) NOT NULL DEFAULT 1,
+  `UnitPrice` decimal(10,2) NOT NULL,
+  `TotalPrice` decimal(10,2) GENERATED ALWAYS AS (`Quantity` * `UnitPrice`) STORED
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `OrderID` int(11) NOT NULL,
+  `UserID` int(11) NOT NULL,
+  `MCBReference` varchar(100) DEFAULT NULL,
+  `ShippingFullName` varchar(255) NOT NULL,
+  `ShippingAddress` varchar(255) NOT NULL,
+  `ShippingEmail` varchar(100) NOT NULL,
+  `ShippingPhoneNumber` varchar(20) DEFAULT NULL,
+  `TotalAmount` decimal(10,2) NOT NULL,
+  `OrderDate` datetime DEFAULT current_timestamp(),
+  `PaymentMethod` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -152,7 +179,25 @@ INSERT INTO `products` (`ProductID`, `CategoryID`, `ProductName`, `Description`,
 (53, 15, 'Hydrogen Peroxide Ox 3% – 900ml', 'The  OX 05 Vol 900ml Revealing Lotion  is authorized for all hair coloring processes and promotes an ideal level of oxidation in the hair, ensuring rapid and damage-free pigmentation. The product is suitable for professional use and its technology works not only to achieve the perfect shade, but also to preserve the hair fiber, providing healthy and uniform hair.\r\n', 715, ' img/product/Cópia de ox-10-vol.jpg\r\n'),
 (54, 15, 'Hydrogen Peroxide Ox 6% – 900ml', 'The  OX 05 Vol 900ml Revealing Lotion  is authorized for all hair coloring processes and promotes an ideal level of oxidation in the hair, ensuring rapid and damage-free pigmentation. The product is suitable for professional use and its technology works not only to achieve the perfect shade, but also to preserve the hair fiber, providing healthy and uniform hair.\r\n', 715, ' img/product/Cópia de ox-20-vol.jpg\r\n'),
 (55, 15, 'Hydrogen Peroxide Ox 9% – 900ml', 'The  OX 05 Vol 900ml Revealing Lotion  is authorized for all hair coloring processes and promotes an ideal level of oxidation in the hair, ensuring rapid and damage-free pigmentation. The product is suitable for professional use and its technology works not only to achieve the perfect shade, but also to preserve the hair fiber, providing healthy and uniform hair.\r\n', 715, ' img/product/Cópia de ox-30-vol.jpg\r\n'),
-(56, 15, 'Hydrogen Peroxide Ox 12% – 900ml', 'The  OX 05 Vol 900ml Revealing Lotion  is authorized for all hair coloring processes and promotes an ideal level of oxidation in the hair, ensuring rapid and damage-free pigmentation. The product is suitable for professional use and its technology works not only to achieve the perfect shade, but also to preserve the hair fiber, providing healthy and uniform hair.\r\n', 715, ' img/product/Cópia de ox-40-vol.jpg\r\n');
+(56, 15, 'Hydrogen Peroxide Ox 12% – 900ml', 'The  OX 05 Vol 900ml Revealing Lotion  is authorized for all hair coloring processes and promotes an ideal level of oxidation in the hair, ensuring rapid and damage-free pigmentation. The product is suitable for professional use and its technology works not only to achieve the perfect shade, but also to preserve the hair fiber, providing healthy and uniform hair.\r\n', 715, ' img/product/Cópia de ox-40-vol.jpg\r\n'),
+(57, 1, 'Face Scrub - Deep Exfoliation & Cleansing', 'N/A', 190, 'img/product/DSC_0324.JPG'),
+(58, 1, 'Redefining Day Cream', 'N/A', 390, 'img/product/DSC_0345.JPG'),
+(59, 1, 'Deep Cleansing Foaming Cleanser', 'N/A', 300, 'img/product/DSC_0349.JPG'),
+(60, 1, 'Hydrating Foaming Cleanser', 'N/A', 300, 'img/product/DSC_0351.JPG'),
+(61, 1, 'Cleansing Milk - Vitamin - C', 'N/A', 170, 'img/product/DSC_0362.JPG'),
+(62, 1, 'Face Mask - Vitamin - C', 'N/A', 170, 'img/product/DSC_0356.JPG'),
+(63, 1, 'Face Scrub - Vitamin - C', 'N/A', 190, 'img/product/DSC_0382.JPG'),
+(64, 1, 'Face Toner - Rose Water', 'N/A', 150, 'img/product/DSC_0336.JPG'),
+(65, 1, 'Hydra Primer Booster', 'N/A', 310, 'img/product/DSC_0396.JPG'),
+(66, 2, 'Make-up Setting Spray', 'N/A', 240, 'img/product/DSC_0333.JPG'),
+(67, 5, 'Shampoo - Hair Fall Control', 'N/A', 210, 'img/product/DSC_0392.JPG'),
+(68, 5, 'Shampoo - Dandruff Control', 'N/A', 210, 'img/product/DSC_0395.JPG'),
+(69, 5, 'Hair Mask - Hair Fall Control', 'N/A', 210, 'img/product/DSC_0389.JPG'),
+(70, 5, 'Hair Mask - Dandruff Control', 'N/A', 210, 'img/product/DSC_0384.JPG'),
+(71, 5, 'Herbal Hair Oil', 'N/A', 340, 'img/product/DSC_0414.JPG'),
+(72, 6, 'Body Wash - Aloe Neem', 'N/A', 230, 'img/product/DSC_0378.JPG'),
+(73, 6, 'Body Scrub - Pomegranate', 'N/A', 200, 'img/product/DSC_0363.JPG'),
+(74, 7, 'Nail Polish Remover', 'N/A', 155, 'img/product/Nail Polish Remover.jpeg');
 
 -- --------------------------------------------------------
 
@@ -167,13 +212,6 @@ CREATE TABLE `users` (
   `Email` varchar(255) NOT NULL,
   `Password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`UserID`, `FirstName`, `LastName`, `Email`, `Password`) VALUES
-(1, 'sheefah', 'chamroo', 'sheefah_chamroo@hotmail.com', '8A9hRSenOh');
 
 --
 -- Indexes for dumped tables
@@ -191,6 +229,21 @@ ALTER TABLE `addresses`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`CategoryID`);
+
+--
+-- Indexes for table `orderitems`
+--
+ALTER TABLE `orderitems`
+  ADD PRIMARY KEY (`OrderItemID`),
+  ADD KEY `OrderID` (`OrderID`),
+  ADD KEY `ProductID` (`ProductID`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`OrderID`),
+  ADD KEY `UserID` (`UserID`);
 
 --
 -- Indexes for table `products`
@@ -223,10 +276,22 @@ ALTER TABLE `categories`
   MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
+-- AUTO_INCREMENT for table `orderitems`
+--
+ALTER TABLE `orderitems`
+  MODIFY `OrderItemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `ProductID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `ProductID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -243,6 +308,19 @@ ALTER TABLE `users`
 --
 ALTER TABLE `addresses`
   ADD CONSTRAINT `userid` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`);
+
+--
+-- Constraints for table `orderitems`
+--
+ALTER TABLE `orderitems`
+  ADD CONSTRAINT `orderitems_ibfk_1` FOREIGN KEY (`OrderID`) REFERENCES `orders` (`OrderID`),
+  ADD CONSTRAINT `orderitems_ibfk_2` FOREIGN KEY (`ProductID`) REFERENCES `products` (`ProductID`);
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`);
 
 --
 -- Constraints for table `products`
