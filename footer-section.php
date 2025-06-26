@@ -54,7 +54,7 @@
 
                             <ul>
                                 <li><span>Address:</span> J & J Healthcare Ltd, SSR Avenue, Phoenix</li>
-                                <li><span>Phone:</span> + 230 5 943 4000</li>
+                                <li><span>Phone:</span> + 230 5 943 4000 / 606 2431 / 606 3032</li>
                                 <li><span>Email:</span> info@jjhealthcareltd.com</li>
                             </ul>
 

@@ -203,7 +203,7 @@ include('session.php');
                                 <ul>
                                     <li><span>Address:</span>J & J Healthcare Ltd, Phoenix</li>
                                     <li><span>Email:</span>info@jjhealthcareltd.com</li>
-                                    <li><span>Phone:</span>+ 230 5 943 4000</li>
+                                    <li><span>Phone:</span>+ 230 5 943 4000 / 606 2431 / 606 3032</li>
                                 </ul>
                                 <div class="contact-social">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
