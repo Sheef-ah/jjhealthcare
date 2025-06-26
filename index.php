@@ -241,7 +241,7 @@ include('dbconnection.php'); // including database connection
                             <h3 class="mb-30">Prohall — Brazilian Haircare Excellence</h3>
                             <div style="display: flex; flex-direction: row-reverse; align-items: center; gap:50px;">
                                 <p>Discover the transformative power of Prohall’s advanced haircare products from Brazil. Whether you seek to revitalize damaged hair, maintain vibrant curls, or achieve salon-quality smoothness, Prohall offers innovative solutions enriched with natural ingredients to give your hair the care it deserves.</p>
-                                <img style="width: 175px; height: 175px" src="img/prohall-logo.jpg"/>
+                                <img style="width: 175px; height: 175px" src="img/prohall_logo.jpg"/>
                             </div>
                         </div>
                         

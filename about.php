@@ -229,7 +229,7 @@ include('session.php');
                         needs. Enriched with natural ingredients, Prohall products offer salon-quality results, helping
                         customers achieve strong, healthy, and beautiful hair.</p>
                 </div>
-                <img style="width: 175px; height: 175px" src="img/prohall-logo.jpg"/>
+                <img style="width: 175px; height: 175px" src="img/prohall_logo.jpg"/>
             </div>
         </div>
     </div><!-- Exclusive Brands Section End-->

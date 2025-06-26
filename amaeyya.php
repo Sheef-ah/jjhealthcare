@@ -79,7 +79,7 @@ if (!empty($_GET['category1']) && !empty($_GET['category2'])) {
 
                                 <!-- Header Social -->
                                 <div class="header-social col-md-4 col-12">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="https://www.facebook.com/amaeyyamru" target="_blank"><i class="fa fa-facebook"></i></a>
                                     <a href="#"><i class="fa fa-twitter"></i></a>
                                     <a href="#"><i class="fa fa-linkedin"></i></a>
                                     <a href="#"><i class="fa fa-instagram"></i></a>
